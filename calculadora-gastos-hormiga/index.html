@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Gastos Hormiga</title>
+
+  <!-- Bootstrap y Estilos CSS -->
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/desktp-mobile.css">
+</head>
+
+<body>
+  <div class="container mt-top-100-40">
+    <div class="text-end">
+      <p class="text-end p-tab-next-step hide-mobile">Paso 1 de 3</p>
+    </div>
+    <h1 class="text-center">Calculadoras Financieras 1</h1>
+    <nav class="tabs">
+      <!-- Gastos hormiga -->
+      <a href="../calculadora-gastos-hormiga/index.html" class="tab-item active">
+        Gastos hormiga
+      </a>
+
+      <!-- Organizando gastos -->
+      <a href="../calculadora-organizando-mis-gastos/index.html" class="tab-item">
+        Organizando gastos
+      </a>
+
+      <!-- Alcanzando sueños -->
+      <a href="../calculadora-alcanzando-mis-suenos/index.html" class="tab-item">Alcanzando sueños
+      </a>
+    </nav>
+    <div class="text-end">
+      <p class="text-center p-tab-next-step hide-desktop-full">Paso 1 de 3</p>
+    </div>
+
+
+    <!-- Sección 1: Ingresar ingresos -->
+    <section id="desktop1" class="calculadora-section hide">
+      <div class="d-flex justify-content-center align-items-center">
+        <img src="../assets/images/icon-gastos 2.png" class="img-fluid mt-5" alt="Descripción de la imagen" width="134">
+      </div>
+      <br>
+      <p class="center-d-left-m">Los gastos hormiga son pequeñas compras que parecen no afectar a tu economía
+        pero al sumarlas representan un gasto importante. Descubre cuánto gastas en ellas y aprende a
+        evitarlas.</p>
+      <div class="d-flex justify-content-center align-items-center">
+        <!-- Número con símbolo de $ -->
+        <div class="outlined-text-field currency-wrapper">
+          <!-- Usamos type="text" para poder mostrar las comas -->
+          <input type="text" id="number" placeholder=" " min="0" max="100">
+          <label for="number">Ingresos mensuales</label>
+          <span>$</span>
+        </div>
+
+      </div>
+      <div class="d-flex justify-content-center align-items-center mt-3">
+        <button id="continueButton" class="button mt-3" disabled>Continuar</button>
+      </div>
+    </section>
+
+
+    <!-- Sección 2: Agregar gastos -->
+    <section id="desktop2" class="calculadora-section container text-center">
+      <p class="mb-1 mt-5 subtitle-01">Agrega tus gastos</p>
+
+      <!-- Botón para mostrar la grid -->
+      <button class="btn-agregar">+ agregar</button>
+
+      <!-- Grid de iconos con texto (oculto al inicio) -->
+      <div class="row row-cols-3 justify-content-center grid-container mt-4">
+        <div class="col">
+          <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="cafes">
+            <img src="../assets/images/icons/coffe.png" alt="Cafés" width="40" class="mb-2">
+            <span>Cafés</span>
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="plataformas">
+            <img src="../assets/images/icons/play.png" alt="Plataformas" width="40" class="mb-2">
+            <span>Plataformas</span>
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="compras">
+            <img src="../assets/images/icons/clic.png" alt="Compras en línea" width="40" class="mb-2">
+            <span>Compras en línea</span>
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="refrescos">
+            <img src="../assets/images/icons/bebidas.png" alt="Refrescos" width="40" class="mb-2">
+            <span>Refrescos</span>
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="cigarros">
+            <img src="../assets/images/icons/cigarrete.png" alt="Cigarros" width="40" class="mb-2">
+            <span>Cigarros</span>
+          </button>
+        </div>
+        <div class="col">
+          <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="otros">
+            <img src="../assets/images/icons/car.png" alt="Otros" width="40" class="mb-2">
+            <span>Otros</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenedor para campos de gasto generados -->
+      <div id="gastos-container" class="mt-4" style="display: none;">
+
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="d-flex flex-column justify-content-center align-items-center mt-3">
+        <button id="finalizarButton" class="button mt-2" disabled>Finalizar</button>
+        <button id="reiniciarButton" class="button-low mt-2" disabled>Reiniciar calculadora</button>
+      </div>
+    </section>
+
+
+    <!-- Sección 3: Resumen -->
+    <section id="desktop3" class="calculadora-section">
+      <div class="custom-container">
+        <div class="row m-top-20">
+          <!-- Datos a la izquierda -->
+          <div class="col-12 col-md-6">
+            <div class="responsive-text w-100">
+              <p class="hormiga-text">Eres una hormiga:</p>
+              <h4 class="fw-bold text-danger">Gastalona</h4>
+              <p class="text-variant-01">¡Fumiga estos gastos!<br>Tus gastos hormiga están elevados</p>
+              <p class="text-variant-01">Representa un:</p>
+              <h4 class="fw-bold text-danger fs-4">55%</h4>
+              <p class="text-variant-01">de tus ingresos mensuales.</p>
+            </div>
+          </div>
+
+          <!-- Gráfica a la derecha -->
+          <div class="col-12 col-md-6">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+              <div class="pie-chart">
+                <div class="slice magenta"></div>
+                <div class="slice orange"></div>
+              </div>
+
+              <div class="legend mt-3 text-center">
+                <div><span class="color income me-2"></span> Ingreso mensual</div>
+                <div><span class="color expenses me-2"></span> Gastos mensuales</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mt-5">
+            <div class="d-flex flex-column flex-md-column align-items-center justify-content-center botones-container">
+              <button class="btn-guardar-compartir order-1 order-md-1 mb-3  ">
+                <span>Guardar o compartir</span>
+                <img src="../assets/images/icons/compartir.png" alt="Compartir" class="icono-compartir">
+              </button>
+
+              <p class="text-center order-2 order-md-1 mt-3">
+                Recuerda que estos gastos pueden representar una parte importante de tu presupuesto.
+                Empieza a reducir algunos de ellos y el dinero que ahorres lo podrías destinar para alcanzar tus sueños.
+              </p>
+
+              <button id="reiniciarButton" class="button-low mt-4 order-3 order-md-2">
+                Reiniciar calculadora
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="custom-container-2">
+        <div class="row align-items-center mt-5">
+          <div class="col-md-6 order-2 order-md-1 responsive-text">
+            <p class="text-prd">Aprende más en el curso de educación financiera que tenemos para ti:</p>
+            <button class="button-high mt-4 mb-4">Conoce tu personalidad financiera</button>
+            <p class="mt-3">O comienza a ahorrar con una <br> <a href="#" class="custom-link">Cuenta Compartamos</a></p>
+          </div>
+          <div class="col-md-6 order-1 order-md-2">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+              <img src="../assets/images/Rectangle 14.png" alt="Imagen de ejemplo" class="img-fluid mb-5">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+  <SCript>
+    function updateChart(income, expenses) {
+      const total = income + expenses;
+      if (total === 0) return;
+
+      const incomePercentage = (income / total) * 100;
+
+      // Asigna el porcentaje como variable CSS
+      document.documentElement.style.setProperty('--income-percentage', `${incomePercentage}%`);
+    }
+
+    // 🚀 Cargar datos desde localStorage
+    const income = parseFloat(localStorage.getItem('income')) || 3000;
+    const expenses = parseFloat(localStorage.getItem('expenses')) || 1000;
+
+    // Inicializa el gráfico
+    updateChart(income, expenses);
+
+  </SCript>
+
+
+
+
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/scripts.js"></script>
+  <!-- Asegúrate de colocar este script justo antes de cerrar la etiqueta </body> -->
+
+
+  <script>
+    // Función para mostrar una sección en particular
+    function mostrarSeccion(numero) {
+      document.querySelectorAll('.calculadora-section').forEach(seccion => {
+        seccion.style.display = 'none';
+      });
+      document.getElementById(`desktop${numero}`).style.display = 'block';
+    }
+
+    // Guarda los ingresos y muestra la sección 2
+    function guardarIngresos() {
+      let ingresos = document.getElementById("ingresos").value;
+      if (ingresos.trim() === "") {
+        return; // Si no hay valor, no se continúa
+      }
+      localStorage.setItem("ingresos", ingresos);
+      mostrarSeccion(2);
+    }
+
+    // Manejo de la habilitación del botón "Continuar" basado en el input
+    document.addEventListener('DOMContentLoaded', function () {
+      // Muestra la sección 1 al cargar la página
+      mostrarSeccion(1);
+
+      const ingresosInput = document.getElementById('ingresos');
+      const continueButton = document.getElementById('continueButton');
+
+      ingresosInput.addEventListener('input', function () {
+        continueButton.disabled = ingresosInput.value.trim() === '';
+      });
+    });
+
+    // Resto de las funciones (agregarGasto, actualizarListaGastos, calcularTotales) se mantienen igual
+    function agregarGasto() {
+      let nombre = document.getElementById("nombre-gasto").value;
+      let valor = document.getElementById("valor-gasto").value;
+      if (nombre && valor) {
+        let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+        gastos.push({ nombre, valor: parseFloat(valor) });
+        localStorage.setItem("gastos", JSON.stringify(gastos));
+        actualizarListaGastos();
+      }
+    }
+
+    function actualizarListaGastos() {
+      let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+      let lista = document.getElementById("lista-gastos");
+      lista.innerHTML = "";
+      gastos.forEach(gasto => {
+        lista.innerHTML += `<li>${gasto.nombre}: $${gasto.valor} diarios</li>`;
+      });
+    }
+
+    function calcularTotales() {
+      let ingresos = parseFloat(localStorage.getItem("ingresos")) || 0;
+      let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+      let totalMensual = gastos.reduce((acc, gasto) => acc + (gasto.valor * 30), 0);
+      let porcentaje = (totalMensual / ingresos) * 100;
+      document.getElementById("ingresos-mostrar").innerText = `$${ingresos}`;
+      document.getElementById("total-gastos").innerText = `$${totalMensual}`;
+      document.getElementById("porcentaje").innerText = `${porcentaje.toFixed(2)}%`;
+      mostrarSeccion(3);
+    }
+  </script>
+
+</body>
+
+</html>

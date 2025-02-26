@@ -1,0 +1,822 @@
+/* Fuente Bree - Regular */
+@font-face {
+     font-family: 'Bree';
+     src: url('../assets/fonts/Bree/BreeRegular.otf') format('opentype');
+     font-weight: normal;
+     font-style: normal;
+}
+
+/* Fuente Bree - Bold */
+@font-face {
+     font-family: 'Bree';
+     src: url('../assets/fonts/Bree/BreeBold.otf') format('opentype');
+     font-weight: bold;
+     font-style: normal;
+}
+
+/* Fuente Bree - ExtraBold */
+@font-face {
+     font-family: 'Bree';
+     src: url('../assets/fonts/Bree/BreeExtrabold.otf') format('opentype');
+     font-weight: 800;
+     font-style: normal;
+}
+
+/* Fuente Bree - Light */
+@font-face {
+     font-family: 'Bree';
+     src: url('../assets/fonts/Bree/BreeLight.otf') format('opentype');
+     font-weight: 300;
+     font-style: normal;
+}
+
+/* Fuente Bree - Thin */
+@font-face {
+     font-family: 'Bree';
+     src: url('../assets/fonts/Bree/BreeThin.otf') format('opentype');
+     font-weight: 200;
+     font-style: normal;
+}
+
+/* Fuente Bree - Semibold */
+@font-face {
+     font-family: 'Bree';
+     src: url('../assets/fonts/Bree/BreeSemibold.otf') format('opentype');
+     font-weight: 600;
+     font-style: normal;
+}
+
+/* Fuente Bree - Oblique */
+@font-face {
+     font-family: 'Bree Oblique';
+     src: url('../assets/fonts/Bree/BreeOblique_Reg.otf') format('opentype');
+     font-weight: normal;
+     font-style: oblique;
+}
+
+
+/* Fuente Inter - Regular */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-Regular.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+}
+
+/* Fuente Inter - Bold */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-Bold.ttf') format('truetype');
+     font-weight: bold;
+     font-style: normal;
+}
+
+/* Fuente Inter - ExtraBold */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-ExtraBold.ttf') format('truetype');
+     font-weight: 800;
+     font-style: normal;
+}
+
+/* Fuente Inter - Black */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-Black.ttf') format('truetype');
+     font-weight: 900;
+     font-style: normal;
+}
+
+/* Fuente Inter - Light */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-Light.ttf') format('truetype');
+     font-weight: 300;
+     font-style: normal;
+}
+
+/* Fuente Inter - ExtraLight */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-ExtraLight.ttf') format('truetype');
+     font-weight: 200;
+     font-style: normal;
+}
+
+/* Fuente Inter - SemiBold */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-SemiBold.ttf') format('truetype');
+     font-weight: 600;
+     font-style: normal;
+}
+
+/* Fuente Inter - Medium */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-Medium.ttf') format('truetype');
+     font-weight: 500;
+     font-style: normal;
+}
+
+/* Fuente Inter - Thin */
+@font-face {
+     font-family: 'Inter';
+     src: url('../assets/fonts/INTER/Inter-Thin.ttf') format('truetype');
+     font-weight: 100;
+     font-style: normal;
+}
+
+@media (min-width: 1400px) {
+
+     .container,
+     .container-lg,
+     .container-md,
+     .container-sm,
+     .container-xl,
+     .container-xxl {
+          max-width: 1000px !important;
+     }
+}
+
+
+
+h1,
+h2,
+h3,
+h4 {
+     font-family: 'Bree', sans-serif;
+     color: #CA0059 !important;
+}
+
+h1 {
+     font-size: 24px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+
+}
+
+h2 {
+     font-weight: bold;
+}
+
+h3 {
+     font-weight: 600;
+     /* SemiBold */
+}
+
+h4 {
+     font-weight: normal;
+     font-size: 18px;
+}
+
+
+p,
+span {
+     font-family: 'Inter', sans-serif;
+     color: #625C5C;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 400;
+     line-height: normal;
+}
+
+p.bold,
+span.bold {
+     font-weight: bold;
+}
+
+p.light,
+span.light {
+     font-weight: 300;
+}
+
+p.thin,
+span.thin {
+     font-weight: 100;
+}
+
+.hide {
+     display: none;
+}
+
+
+.p-tab-next-step {
+     color: #908A8A;
+     text-align: right;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 400;
+     line-height: normal;
+     margin-bottom: 42px;
+}
+
+
+.tabs {
+     margin-top: 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 10px;
+}
+
+/* Solo en pantallas pequeñas */
+@media (max-width: 768px) {
+     .tabs {
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          padding-left: 105px;
+          padding-right: 16px;
+          margin-bottom: 24px;
+     }
+
+     .tabs::-webkit-scrollbar {
+          display: none;
+          /* Oculta la barra de scroll en WebKit (Chrome, Safari, etc.) */
+     }
+
+     .tabs {
+          scrollbar-width: none;
+          /* Oculta la barra de scroll en Firefox */
+     }
+
+     .tab-item {
+          /* Para que cada tab ocupe solo lo necesario y no fuerce un salto de línea */
+          flex: 0 0 auto;
+     }
+}
+
+
+.tab-item {
+     /* Medidas y estilo inactivo por defecto */
+     display: inline-flex;
+     justify-content: center;
+     align-items: center;
+     width: auto;
+     font-size: 14px;
+     height: 28px;
+     padding-left: 16px;
+     padding-right: 15px;
+     border-radius: 40px;
+
+     /* Inactivo */
+     border: 1px solid #ABABAB;
+     background: #E8E8E8;
+     color: #ABABAB;
+
+     text-decoration: none;
+     /* Quita el subrayado de los <a> */
+     font-family: sans-serif;
+     /* Por ejemplo */
+}
+
+/* Cuando el tab está activo */
+.tab-item.active {
+     border: 1px solid #CA0059;
+     background: #FFE0EE;
+     color: #CA0059;
+}
+
+.mt-5 {
+     margin-top: 40px !important;
+}
+
+
+
+.button {
+     width: 324px;
+     height: 52px;
+     border-radius: 25.5px;
+     font-size: 16px;
+     font-weight: 500;
+     text-align: center;
+     border: none;
+     cursor: not-allowed;
+     background: #EDECF0;
+     color: #83786F;
+     transition: 0.3s;
+}
+
+.button.active {
+     background: #CA0059;
+     color: #FFFFFF;
+     cursor: pointer;
+}
+
+
+.button-high {
+     width: 324px;
+     height: 52px;
+     border-radius: 25.5px;
+     font-size: 16px;
+     font-weight: 500;
+     text-align: center;
+     border: none;
+     cursor: not-allowed;
+     background: #CA0059;
+     color: #FFFFFF;
+     transition: 0.3s;
+}
+
+.button-high .active {
+     background: #CA0059;
+     color: #FFFFFF;
+     cursor: pointer;
+}
+
+.button-low {
+     width: 324px;
+     height: 52px;
+     border-radius: 25.5px;
+     font-size: 16px;
+     font-weight: 500;
+     text-align: center;
+     border: none;
+     cursor: not-allowed;
+     border: 1px solid #CA0059;
+     background: #ffffff;
+     color: #CA0059;
+     transition: 0.3s;
+}
+
+.button-low:disabled {
+     color: #908A8A;
+     border: 1px solid #908A8A;
+     background: #ffffff; /* Manteniendo el fondo blanco */
+     cursor: not-allowed; /* Ya está en tu estilo base */
+     opacity: 1; /* Asegura que no se reduzca la opacidad */
+ }
+ 
+
+
+.btn-agregar {
+     color: #189CE9;
+     font-size: 14px;
+     font-family: 'Inter', sans-serif;
+     text-decoration: underline;
+     background: transparent;
+     border: none;
+     cursor: pointer;
+     display: inline-flex;
+     align-items: center;
+     gap: 5px;
+     padding: 0;
+     transition: color 0.2s ease;
+     /* Transición suave al hacer hover */
+}
+
+.btn-agregar:hover {
+     color: #0D84CC;
+     font-weight: 500;
+     background: transparent;
+}
+
+
+.btn-guardar-compartir {
+     display: inline-flex;
+     align-items: center;
+     border: none;
+     background: transparent;
+     color: #189CE9 !important;
+     font-size: 16px;
+     font-weight: 500;
+     cursor: pointer;
+     padding: 0;
+     transition: color 0.2s ease;
+}
+
+
+.btn-guardar-compartir span {
+     color: #189CE9 !important;
+     font-size: 14px;
+}
+
+
+.btn-guardar-compartir:hover {
+     color: #107ac7;
+     /* Un tono más oscuro para el hover */
+}
+
+.btn-guardar-compartir .icono-compartir {
+     width: 20px;
+     height: 20px;
+     margin-left: 8px;
+}
+
+
+
+.outlined-text-field,
+.filled-text-field,
+.standard-text-field {
+     position: relative;
+     margin: 20px 0;
+}
+
+.outlined-text-field input,
+.filled-text-field input,
+.standard-text-field input {
+     width: 250px;
+     height: 56px;
+     padding: 10px 10px 10px 30px;
+     border: 1px solid #AFB3B6;
+     ;
+     border-radius: 4px;
+     outline: none;
+     font-size: 16px;
+     appearance: textfield;
+     display: flex;
+     align-items: center;
+}
+
+/* Estilos del label */
+.outlined-text-field label,
+.filled-text-field label,
+.standard-text-field label {
+     position: absolute;
+     top: 14px;
+     left: 16px;
+     /* Ajustar posición para no chocar con el símbolo */
+     font-size: 16px;
+     color: #798388;
+     transition: 0.2s ease-in-out;
+     pointer-events: none;
+}
+
+/* Mueve el label arriba cuando hay foco o el usuario escribió */
+.outlined-text-field input:focus+label,
+.outlined-text-field input:not(:placeholder-shown)+label {
+     top: -8px;
+     left: 8px;
+     font-size: 12px;
+     background: #ffffff;
+     padding: 0 4px;
+}
+
+/* Ajustes adicionales */
+.filled-text-field input {
+     background-color: #e0e0e0;
+     border: none;
+}
+
+.standard-text-field input {
+     border: none;
+     border-bottom: 2px solid #AFB3B6;
+     border-radius: 0;
+}
+
+.disabled input {
+     background: #ddd;
+     border: 2px solid #aaa;
+     cursor: not-allowed;
+}
+
+.error input {
+     border-color: red;
+}
+
+.error-message {
+     color: red;
+     font-size: 12px;
+     margin-top: 4px;
+}
+
+/* Ajustes para el input con símbolo de moneda */
+.currency-wrapper {
+     position: relative;
+     display: inline-block;
+}
+
+/* El símbolo "$" ahora estará a la izquierda dentro del input */
+.currency-wrapper span {
+     position: absolute;
+     left: 10px;
+     top: 50%;
+     transform: translateY(-50%);
+     font-size: 16px;
+     color: #060606;
+     opacity: 0;
+     /* Ocultar por defecto */
+     transition: opacity 0.2s ease-in-out;
+     pointer-events: none;
+}
+
+/* Mostrar el símbolo "$" solo cuando hay focus o un número escrito */
+.currency-wrapper input:focus~span,
+.currency-wrapper input:not(:placeholder-shown)~span {
+     opacity: 1;
+}
+
+/* Evitar que el número se solape con el símbolo */
+.currency-wrapper input {
+     padding-left: 25px;
+     /* Espacio para el símbolo */
+}
+
+/* Ocultar las flechas en inputs de tipo número */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+}
+
+.subtitle-01 {
+     color: #625C5C;
+     text-align: center;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+}
+
+.grid-container {
+     width: 100%;
+     margin: 0 auto;
+}
+
+@media (min-width: 769px) {
+     .grid-container {
+          max-width: 440px;
+     }
+}
+
+/* Estilos base para la estructura */
+.grid-container {
+     width: 100%;
+     margin: 0 auto;
+}
+
+@media (min-width: 769px) {
+     .grid-container {
+          max-width: 300px;
+     }
+}
+
+
+
+.trash-icon {
+     cursor: pointer;
+     width: 20px;
+     height: 20px;
+     margin-left: 10px;
+}
+
+.total-section {
+     text-align: right;
+     margin-left: 20px;
+     justify-content: center;
+     display: flex;
+     align-items: center;
+}
+
+.total-section p {
+     margin: 2px 0;
+     font-size: 14px;
+}
+
+.total-section strong {
+     color: #d50057;
+}
+
+.info-input {
+     display: flex;
+     margin-right: 16px;
+     justify-content: center;
+     flex-flow: column;
+     align-items: center;
+     width: 80px;
+}
+
+.input-seciont-add {
+     display: flex;
+     justify-content: center;
+}
+
+.total-seciton-p {
+     display: flex;
+     justify-content: center;
+}
+
+.total-seciton-p .total-section {
+     margin-right: 24px;
+}
+
+.total-seciton-p .total-section p {
+     color: #CA0059;
+     text-align: center;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+}
+
+.total-seciton-p .number-section p {
+     color: #CA0059;
+     text-align: left;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+}
+
+.total-seciton-p .number-section span {
+     font-family: Inter;
+     font-size: 14px;
+     text-align: right;
+}
+
+.btn-agregar {
+     display: block;
+     margin: 0 auto;
+     margin-top: 16px;
+}
+
+
+.pie-chart {
+     position: relative;
+     width: 200px;
+     height: 200px;
+     border-radius: 50%;
+     transform: rotate(-270deg);
+     /* Gira la gráfica para que el inicio esté a la derecha */
+}
+
+
+.slice {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     border-radius: 50%;
+}
+
+.slice.magenta {
+     background: conic-gradient(#C30054 0% var(--income-percentage),
+               transparent var(--income-percentage) 100%);
+     /* Borde magenta (pastel completo) */
+     z-index: 1;
+}
+
+.slice.orange {
+     /* Fondo con gradiente cónico para representar la rebanada */
+     background: conic-gradient(transparent 0% var(--income-percentage),
+               #FFA500 var(--income-percentage) 100%);
+
+     /* Asegura que esta rebanada esté por encima de otras capas */
+     border: 2px solid #ffffff;
+     transform: translate(-5px, -5px);
+
+}
+
+.legend {
+     display: flex;
+     flex-direction: column;
+     font-family: Arial, sans-serif;
+     font-size: 16px;
+     color: #5C5C5C;
+     /* Color de texto similar al de la imagen */
+     margin-top: 10px;
+}
+
+.legend div {
+     display: flex;
+     align-items: center;
+     margin: 6px 0;
+}
+
+.legend .color {
+     display: inline-block;
+     width: 12px;
+     height: 12px;
+     border-radius: 50%;
+     margin-right: 8px;
+}
+
+.legend .income {
+     background-color: #C30054;
+     /* Magenta para ingreso */
+}
+
+.legend .expenses {
+     background-color: #FFA500;
+     /* Naranja para gastos */
+}
+
+.hormiga-text {
+     color: #625C5C;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 400;
+     line-height: normal;
+}
+
+.text-variant-01 {
+     color: #ABABAB;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 400;
+     line-height: normal;
+}
+
+.responsive-text {
+     text-align: center;
+     /* Por defecto, en móvil */
+}
+
+@media (min-width: 768px) {
+     .responsive-text {
+          text-align: left;
+     }
+}
+
+.m-top-20 {
+     margin-top: 0px;
+}
+
+@media (min-width: 768px) {
+     .m-top-20 {
+          margin-top: 50px;
+     }
+}
+
+
+.custom-container {
+     width: 100%;
+     margin: 0 auto;
+     padding: 0 15px;
+     /* Asegura espacio lateral en móviles */
+}
+
+@media (min-width: 1400px) {
+     .custom-container {
+          max-width: 612px;
+     }
+}
+
+
+.custom-container-2 {
+     width: 100%;
+     margin: 0 auto;
+     padding: 0 15px;
+     /* Asegura espacio lateral en móviles */
+}
+
+@media (min-width: 1400px) {
+     .custom-container-2 {
+          max-width: 812px;
+     }
+}
+
+.text-prd {
+     color: #060606;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 400;
+     line-height: normal;
+}
+.custom-link {
+     color: #189CE9;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 400;
+     line-height: normal;
+     text-decoration-line: underline;
+     text-decoration-style: solid;
+     text-decoration-skip-ink: none;
+     text-decoration-thickness: auto;
+     text-underline-offset: auto;
+     text-underline-position: from-font;
+}
+
+
+@media (max-width: 767.98px) {
+     .botones-container {
+       display: flex;
+       flex-direction: column;
+     }
+   
+     .botones-container .btn-guardar-compartir {
+       order: 1;
+     }
+   
+     .botones-container p {
+       order: 2;
+       margin-top: 16px;
+     }
+   
+     .botones-container #reiniciarButton {
+       order: 3;
+     }
+   }
+   
