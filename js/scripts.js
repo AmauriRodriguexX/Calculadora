@@ -156,6 +156,31 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// MARK: - Funcion botones finalizar cambien de posicion en el seciton del id Desktop 2
+document.addEventListener('DOMContentLoaded', function () {
+  // Verificamos si el ancho de la ventana es de 768px o menor
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const buttonsContainer = document.querySelector('#desktop2 .action-buttons');
+    
+    // Configuración inicial: posición absoluta
+    buttonsContainer.style.position = 'absolute';
+    buttonsContainer.style.bottom = '24px';
+    buttonsContainer.style.left = '16px';
+    buttonsContainer.style.right = '16px';
+    
+    // Seleccionamos el botón "+ agregar"
+    const agregarBtn = document.querySelector('.btn-agregar');
+    
+    // Al hacer click en el botón, cambiamos la posición a "unset"
+    if (agregarBtn) {
+      agregarBtn.addEventListener('click', function() {
+        buttonsContainer.style.position = 'unset';
+      });
+    }
+  }
+});
+
+
 // MARK: - Función para mostrar una sección en particular y actualizar el paso
 function mostrarSeccion(numero) {
   // Oculta todas las secciones
