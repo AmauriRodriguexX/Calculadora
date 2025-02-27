@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.addEventListener('click', function() {
         clickCounter++;
         // Cuando se haya hecho clic al menos 2 veces, cambiamos la posición a "unset"
-        if (clickCounter >= 2) {
+        if (clickCounter >= 1) {
           buttonsContainer.style.position = 'unset';
         }
       });

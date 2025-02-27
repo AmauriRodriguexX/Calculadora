@@ -232,13 +232,17 @@ span.thin {
 /* Solo en pantallas pequeñas */
 @media (max-width: 768px) {
      .tabs {
+          display: flex;
           flex-wrap: nowrap;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
-          padding-left: 105px;
+          justify-content: flex-start;
+          padding-left: 15px;
+          /* Ajustado para que siempre mantenga 15px del borde */
           padding-right: 16px;
           margin-bottom: 24px;
      }
+
 
      .tabs::-webkit-scrollbar {
           display: none;
