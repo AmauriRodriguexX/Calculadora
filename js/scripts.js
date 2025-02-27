@@ -1,3 +1,12 @@
+
+let initialStepText = "";
+if (window.location.pathname.includes("calculadora-alcanzando-mis-suenos")) {
+  initialStepText = "Paso 1 de 2";
+} else {
+  const pSteps = document.querySelectorAll('.p-tab-next-step');
+  initialStepText = pSteps.length > 0 ? pSteps[0].innerText : "";
+}
+
 // MARK: - Funcion para la calculadora de mis suenos 
 document.addEventListener('DOMContentLoaded', function() {
   // Secciones principales
@@ -10,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // En desktop1 definimos dos áreas:
   // Área A: Grid de botones (visible inicialmente)
   const gridContainer = desktop1.querySelector('.grid-container-2');
+    // Al cargar el DOM, definimos el texto inicial de los pasos según el flujo
 
   // Área B: el resto (ícono, sliders y botones de acción)
   // - Contenedor del ícono: primer div.container con clases d-flex.justify-content-center.align-items-center
@@ -96,23 +106,55 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Al hacer clic en cualquiera de los botones de la grid (Área A)
-  const gastoButtons = desktop1.querySelectorAll('.gasto-btn');
-  gastoButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      // Ocultar la grid de botones
-      if (gridContainer) gridContainer.style.setProperty('display', 'none', 'important');
-      // Mostrar Área B: ícono, sliders y botones de acción
-      if (iconContainer) iconContainer.style.setProperty('display', 'block', 'important');
-      if (sliderContainer) sliderContainer.style.setProperty('display', 'block', 'important');
-      if (actionButtons) actionButtons.style.setProperty('display', 'flex', 'important');
-      // Opcional: actualizar el texto del ícono según la opción elegida
-      const opcion = btn.querySelector('span').innerText;
-      const dreamsText = iconContainer ? iconContainer.querySelector('.dreams-text') : null;
-      if (dreamsText) {
-        dreamsText.innerText = opcion;
+const gastoButtons = desktop1.querySelectorAll('.gasto-btn');
+gastoButtons.forEach(btn => {
+  btn.addEventListener('click', function() {
+    // Ocultar la grid de botones
+    if (gridContainer) gridContainer.style.setProperty('display', 'none', 'important');
+    // Mostrar Área B: ícono, sliders y botones de acción
+    if (iconContainer) iconContainer.style.setProperty('display', 'block', 'important');
+    if (sliderContainer) sliderContainer.style.setProperty('display', 'block', 'important');
+    if (actionButtons) actionButtons.style.setProperty('display', 'flex', 'important');
+
+    // Obtener la opción seleccionada
+    const opcion = btn.querySelector('span').innerText;
+    
+    // Actualizar el ícono y texto en desktop1
+    const dreamsText = iconContainer ? iconContainer.querySelector('.dreams-text') : null;
+    if (dreamsText) {
+      dreamsText.innerText = opcion;
+    }
+    
+    const iconImg = iconContainer ? iconContainer.querySelector('img') : null;
+    const iconMap = {
+      "Viajes": "../assets/images/icons/viaje.png",
+      "Estudios": "../assets/images/icons/estudios.png",
+      "Ahorro": "../assets/images/icons/ahorro.png",
+      "Casa": "../assets/images/icons/casa.png",
+      "Negocio": "../assets/images/icons/negocio.png",
+      "Otros": "../assets/images/icons/otro.png"
+    };
+    if (iconImg && iconMap[opcion]) {
+      iconImg.src = iconMap[opcion];
+      iconImg.alt = opcion;
+    }
+    
+    // Actualizar el ícono y texto en desktop2 (si existe)
+    const dreamIconDesktop2 = document.querySelector('#desktop2 .dream-icon');
+    if (dreamIconDesktop2) {
+      const iconImg2 = dreamIconDesktop2.querySelector('img');
+      const textDreamHead2 = dreamIconDesktop2.querySelector('.text-dream-head');
+      if (iconImg2 && iconMap[opcion]) {
+        iconImg2.src = iconMap[opcion];
+        iconImg2.alt = opcion;
       }
-    });
+      if (textDreamHead2) {
+        textDreamHead2.innerText = opcion;
+      }
+    }
   });
+});
+
 
   // Acción del botón "Finalizar": si está habilitado, actualizar el paso y enviar a desktop2
   if (finalizarButton) {
@@ -163,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttonsContainer = document.querySelector('#desktop2 .action-buttons');
     
     // Configuración inicial: posición absoluta
-    buttonsContainer.style.position = 'absolute';
+    buttonsContainer.style.position = 'unset';
     buttonsContainer.style.bottom = '24px';
     buttonsContainer.style.left = '16px';
     buttonsContainer.style.right = '16px';
@@ -192,7 +234,11 @@ function mostrarSeccion(numero) {
 
   // Actualiza el texto de los pasos en los elementos con clase "p-tab-next-step"
   document.querySelectorAll('.p-tab-next-step').forEach(el => {
-    el.innerText = `Paso ${numero} de 3`;
+    if (numero === 1) {
+      el.innerText = initialStepText;
+    } else {
+      el.innerText = `Paso ${numero} de 3`;
+    }
   });
 }
 
@@ -351,10 +397,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Al hacer clic en "+ agregar": mostrar la grid y ocultar el botón.
   const btnAgregar = document.querySelector('.btn-agregar');
-  btnAgregar.addEventListener('click', function() {
-    document.querySelector('.grid-container').style.display = 'flex';
-    this.style.display = 'none';
-  });
+btnAgregar.addEventListener('click', function() {
+  document.querySelector('.grid-container').style.display = 'flex';
+  this.style.display = 'none';
+});
 
   // Asignar evento a cada botón de gasto de la grid.
   document.querySelectorAll('.gasto-btn').forEach(btn => {
@@ -365,7 +411,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Luego de seleccionar una opción:
       document.querySelector('.grid-container').style.display = 'none';
       btnAgregar.style.display = 'block';
-      // Asegurarse de mostrar el contenedor de gastos.
+      btnAgregar.innerText = '+ agregar otro'; // Cambia el texto
+      // Asegúrate de mostrar el contenedor de gastos.
       document.getElementById('gastos-container').style.display = 'block';
     });
   });
@@ -398,19 +445,21 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     let detallesGasto = '';
-    if (!document.getElementById('only-tatal')) {
-      detallesGasto = `
-        <div class="total-section">
-          <div class="total-seciton-p">
-            <div class="number-section">
-              <p>Semanal: <span id="semanal-${id}">$0.00</span></p>
-              <p>Mensual: <span id="mensual-${id}">$0.00</span></p>
-              <p>Anual: <span id="anual-${id}">$0.00</span></p>
-            </div>
-          </div>
+if (!document.getElementById('only-tatal')) {
+  // Flujo Gastos hormiga (u otro): se muestran semanal, mensual y anual
+  detallesGasto = `
+    <div class="total-section">
+      <div class="total-seciton-p">
+        <div class="number-section">
+          <p>Semanal: <span id="semanal-${id}">$0.00</span></p>
+          <p>Mensual: <span id="mensual-${id}">$0.00</span></p>
+          <p>Anual: <span id="anual-${id}">$0.00</span></p>
         </div>
-      `;
-    }
+      </div>
+    </div>
+  `;
+}
+// Si document.getElementById('only-tatal') existe, detallesGasto se queda vacío
 
     const expenseDiv = document.createElement('div');
     expenseDiv.classList.add('input-seciont-add');
@@ -485,14 +534,30 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   document.getElementById('reiniciarButton').addEventListener('click', function() {
-    document.getElementById('gastos-container').innerHTML = '';
+    const gastosContainer = document.getElementById('gastos-container');
+    if (gastosContainer) {
+      // Vacía el contenedor y vuelve a insertar el indicador para Organizando gastos.
+      gastosContainer.innerHTML = '<div id="only-tatal"></div>';
+      gastosContainer.style.display = 'none';
+    }
     document.querySelector('.grid-container').style.display = 'none';
+    const btnAgregar = document.querySelector('.btn-agregar');
     btnAgregar.style.display = 'block';
+    btnAgregar.innerText = '+ agregar'; // Restablece el texto original
     this.disabled = true;
+    
+    // Restaura el texto inicial de los pasos usando initialStepText
+    const pTabSteps = document.querySelectorAll('.p-tab-next-step');
+    pTabSteps.forEach(el => {
+      el.innerText = initialStepText;
+    });
+    
     const desktop1 = document.getElementById('desktop1');
     if (desktop1) {
       desktop1.classList.remove('hide');
       desktop1.scrollIntoView({ behavior: 'smooth' });
     }
   });
+  
+  
 });

@@ -31,10 +31,6 @@
      background: conic-gradient(transparent 0% var(--income-percentage),
                #FFA500 var(--income-percentage) 100%);
 
-     /* Asegura que esta rebanada esté por encima de otras capas */
-     border: 2px solid #ffffff;
-     transform: translate(-5px, -5px);
-
 }
 
 .legend {

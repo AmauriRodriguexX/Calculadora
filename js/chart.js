@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Cargar datos desde localStorage (o valores por defecto)
   const income = parseFloat(localStorage.getItem('income')) || 3000;
-  const expenses = parseFloat(localStorage.getItem('expenses')) || 1000;
+  const expenses = parseFloat(localStorage.getItem('expenses')) || 2000;
   updateChart(income, expenses);
 
   // MARK: Chart Donut
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let gradient = "";
     let accumulatedPercent = 0;
     // Gap entre secciones
-    const gapSm = 0.5;
+    const gapSm = 0;
 
     // Generar el conic-gradient
     categories.forEach((cat, index) => {

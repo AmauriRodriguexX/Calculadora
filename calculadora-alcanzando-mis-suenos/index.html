@@ -11,194 +11,246 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/desktp-mobile.css">
     <link rel="stylesheet" href="../css/chart.css">
-    <!-- favicon  -->
-    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    <div class="container mt-top-100-40">
-        <div class="text-end">
-            <p class="text-end p-tab-next-step hide-mobile">Paso 1 de 2</p>
-        </div>
-        <h1 class="text-center">Calculadoras Financieras</h1>
-        <!-- tabs -->
-        <nav class="tabs">
-            <!-- Gastos hormiga -->
-            <a href="../calculadora-gastos-hormiga/index.html" class="tab-item">
-                Gastos hormiga
-            </a>
 
-            <!-- Organizando gastos -->
-            <a href="../calculadora-organizando-mis-gastos/index.html" class="tab-item">
-                Organizando gastos
-            </a>
+    <header class="custom-header">
+        <img src="../assets/images/logo_CB.png" alt="Logo" class="logo" width="120">
+    </header>
 
-            <!-- Alcanzando sueños -->
-            <a href="../calculadora-alcanzando-mis-suenos/index.html" class="tab-item active">Alcanzando sueños
-            </a>
-        </nav>
-        <div class="text-end">
-            <p class="text-center p-tab-next-step hide-desktop-full">Paso 1 de 2</p>
-        </div>
-
-        <!-- Sección 1: Ingresar ingresos -->
-        <section id="desktop1" class="calculadora-section hide">
-            <div class="row row-cols-3 justify-content-center grid-container-2 mt-4">
-                <div class="col">
-                    <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="cafes">
-                        <img src="../assets/images/icons/coffe.png" alt="Cafés" class="mb-2">
-                        <span>Cafés</span>
-                    </button>
-                </div>
-                <div class="col">
-                    <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
-                        data-gasto="plataformas">
-                        <img src="../assets/images/icons/play.png" alt="Plataformas" class="mb-2">
-                        <span>Plataformas</span>
-                    </button>
-                </div>
-                <div class="col">
-                    <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="compras">
-                        <img src="../assets/images/icons/clic.png" alt="Compras en línea" class="mb-2">
-                        <span>Compras en línea</span>
-                    </button>
-                </div>
-                <div class="col">
-                    <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
-                        data-gasto="refrescos">
-                        <img src="../assets/images/icons/bebidas.png" alt="Refrescos" class="mb-2">
-                        <span>Refrescos</span>
-                    </button>
-                </div>
-                <div class="col">
-                    <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
-                        data-gasto="cigarros">
-                        <img src="../assets/images/icons/cigarrete.png" alt="Cigarros" class="mb-2">
-                        <span>Cigarros</span>
-                    </button>
-                </div>
-                <div class="col">
-                    <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="otros">
-                        <img src="../assets/images/icons/car.png" alt="Otros" class="mb-2">
-                        <span>Otros</span>
-                    </button>
-                </div>
+    <div class="main-content">
+        <div class="container mt-top-100-40">
+            <div class="text-end">
+                <p class="text-end p-tab-next-step hide-mobile">Paso 1 de 2</p>
             </div>
-            <div class="container d-flex justify-content-center align-items-center mt-4-desktop" style="display: none;">
-                <div class="dream-icon text-center">
-                  <img src="../assets/images/icons/viaje.png" alt="Viaje">
-                  <p class="dreams-text">Viaje</p>
-                </div>
-              </div>
+            <h1 class="text-center">Calculadoras Financieras</h1>
+            <!-- tabs -->
+            <nav class="tabs">
+                <!-- Gastos hormiga -->
+                <a href="../calculadora-gastos-hormiga/index.html" class="tab-item">
+                    Gastos hormiga
+                </a>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="slider-box">
-                            <h5 class="slider-label text-center">¿Cuánto cuesta cumplir tu sueño?</h5>
-                            <input type="range" class="dream-slider" id="dreamCost" min="0" max="200000" step="1000"
-                                value="140000">
-                            <p class="slider-value number-text-progres text-center" id="costValue">$140,000</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="slider-box">
-                            <h5 class="slider-label text-center">¿En cuánto tiempo quieres cumplir tu sueño?</h5>
-                            <input type="range" class="dream-slider" id="dreamTime" min="1" max="20" step="1"
-                                value="11">
-                            <p class="slider-value number-text-progres text-center" id="timeValue">11 años</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Organizando gastos -->
+                <a href="../calculadora-organizando-mis-gastos/index.html" class="tab-item">
+                    Organizando gastos
+                </a>
+
+                <!-- Alcanzando sueños -->
+                <a href="../calculadora-alcanzando-mis-suenos/index.html" class="tab-item active">Alcanzando sueños
+                </a>
+            </nav>
+            <div class="text-end">
+                <p class="text-center p-tab-next-step hide-desktop-full">Paso 1 de 2</p>
             </div>
-            <!-- Botones de acción -->
-            <div class="action-buttons d-flex flex-column justify-content-center align-items-center mt-3" style="display: none;">
-                <button id="finalizarButton" class="button mt-2" disabled>Finalizar</button>
-                <button id="reiniciarButton" class="button-low mt-2" disabled>Reiniciar calculadora</button>
-              </div>
-        </section>
 
-        <!-- Sección 2: Resumen -->
-        <section id="desktop2" class="calculadora-section">
-            <div class="custom-container">
-                <div class="row m-top-20">
-                    <!-- Datos a la izquierda -->
-                    <div
-                        class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="responsive-text w-100">
-                            <p class="hormiga-text">Tienes un saldo:</p>
-                            <h4 class="fw-bold">Positivo</h4>
-                            <p class="text-variant-01"><strong>¡Felicidades eres muy bueno organizando tus
-                                    finanzas!</strong><br>Tus
-                                ingresos son mayores a tus gastos.</p>
-                            <p class="text-variant-01">Tu balance:</p>
-                            <h4 class="fw-bold">$26,000</h4>
-                            <p class="text-variant-01">de tus ingresos mensuales.</p>
-                        </div>
+            <!-- Sección 1: Ingresar ingresos -->
+            <section id="desktop1" class="calculadora-section hide">
+                <div class="row row-cols-3 justify-content-center grid-container-2 mt-4">
+                    <div class="col">
+                        <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
+                            data-gasto="cafes">
+                            <img src="../assets/images/icons/viaje.png" alt="Cafés" class="mb-2">
+                            <span>Viajes</span>
+                        </button>
                     </div>
+                    <div class="col">
+                        <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
+                            data-gasto="plataformas">
+                            <img src="../assets/images/icons/estudios.png" alt="Plataformas" class="mb-2">
+                            <span>Estudios</span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
+                            data-gasto="compras">
+                            <img src="../assets/images/icons/ahorro.png" alt="Compras en línea" class="mb-2">
+                            <span>Ahorro</span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
+                            data-gasto="refrescos">
+                            <img src="../assets/images/icons/casa.png" alt="Refrescos" class="mb-2">
+                            <span>Casa</span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
+                            data-gasto="cigarros">
+                            <img src="../assets/images/icons/negocio.png" alt="Cigarros" class="mb-2">
+                            <span>Negocio</span>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
+                            data-gasto="otros">
+                            <img src="../assets/images/icons/otro.png" alt="Otros" class="mb-2">
+                            <span>Otros</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="container d-flex justify-content-center align-items-center" style="display: none;">
+                    <div class="dream-icon text-center">
+                        <img src="../assets/images/icons/viaje.png" alt="Viaje">
+                        <p class="dreams-text">Viaje</p>
+                    </div>
+                </div>
 
-
-                    <!-- Gráfica a la derecha -->
-                    <div class="col-12 col-md-6">
-                        <div class="d-flex flex-column align-items-center justify-content-center">
-                            <!-- Contenedor del Gráfico Donut -->
-                            <div class="donut-chart">
-                                <div class="donut"></div>
-                                <div class="donut-center"></div> <!-- Centro vacío para el efecto donut -->
-                                <div class="percent-labels"></div> <!-- Contenedor de etiquetas de porcentaje -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 d-flex justify-content-center">
+                            <div class="slider-box">
+                                <h5 class="slider-label text-center">¿Cuánto cuesta cumplir tu sueño?</h5>
+                                <input type="range" class="dream-slider" id="dreamCost" min="0" max="200000" step="1000"
+                                    value="140000">
+                                <p class="slider-value number-text-progres text-center" id="costValue">$140,000</p>
                             </div>
-
-                            <!-- Leyenda -->
-                            <div class="legend">
-                                <div><span class="color rent"></span> Renta</div>
-                                <div><span class="color services"></span> Pago de servicios</div>
-                                <div><span class="color health"></span> Salud</div>
-                                <div><span class="color extras"></span> Gastos hormiga</div>
-                                <div><span class="color fun"></span> Diversión</div>
+                        </div>
+                        <div class="col-12 col-md-6 d-flex justify-content-center">
+                            <div class="slider-box">
+                                <h5 class="slider-label text-center">¿En cuánto tiempo quieres cumplir tu sueño?</h5>
+                                <input type="range" class="dream-slider" id="dreamTime" min="1" max="20" step="1"
+                                    value="11">
+                                <p class="slider-value number-text-progres text-center" id="timeValue">11 años</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-5">
+                </div>
+                <!-- Botones de acción -->
+                <div class="action-buttons d-flex flex-column justify-content-center align-items-center mt-3"
+                    style="display: none;">
+                    <button id="finalizarButton" class="button mt-2" disabled>Finalizar</button>
+                    <button id="reiniciarButton" class="button-low mt-2" disabled>Reiniciar calculadora</button>
+                </div>
+            </section>
+
+            <!-- Sección 2: Resumen -->
+            <section id="desktop2" class="calculadora-section">
+                <div class="custom-container">
+                    <div class="row m-top-20">
+                        <!-- Nueva estructura basada en las imágenes -->
+                        <div class="col-12 text-center">
+                            <div class="dream-icon text-center">
+                                <img src="../assets/images/icons/viaje.png" alt="Viaje">
+                                <p class="text-dream-head">Viaje</p>
+                            </div>
+                        </div>
+
                         <div
-                            class="d-flex flex-column flex-md-column align-items-center justify-content-center botones-container">
-                            <button class="btn-guardar-compartir order-1 order-md-1 mb-3  ">
-                                <span>Guardar o compartir</span>
-                                <img src="../assets/images/icons/compartir.png" alt="Compartir" class="icono-compartir">
+                            class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center text-center">
+                            <p class="cost-label">Costo <span>$140,000</span></p>
+                            <p class="cost-label">Tiempo <span>11 años</span></p>
+                        </div>
+
+                        <div class="col-12 col-md-6 text-center text-md-start">
+                            <p class="savings-info">Para alcanzar mis sueños debo ahorrar:</p>
+                            <div class="savings-box">
+                                <p><span class="savings-label">Diariamente:</span> $34.87</p>
+                                <p><span class="savings-label">Mensualmente:</span> $1,060.61</p>
+                                <p><span class="savings-label">Anualmente:</span> $12,727.27</p>
+                            </div>
+                        </div>
+
+                        <!-- Los siguientes elementos no se tocan -->
+                        <div class="col-12 mt-5">
+                            <div
+                                class="d-flex flex-column flex-md-column align-items-center justify-content-center botones-container">
+                                <button class="btn-guardar-compartir order-1 order-md-1 mb-3" data-bs-toggle="modal"
+                                    data-bs-target="#guardarCompartirModal">
+                                    <span>Guardar o compartir</span>
+                                    <img src="../assets/images/icons/compartir.png" alt="Compartir"
+                                        class="icono-compartir">
+                                </button>
+
+                                <p class="text-center order-2 order-md-1 mt-3"> Ahora que tienes un sueño claro y que
+                                    estás
+                                    decidido a alcanzarlo, planifica tus finanzas para hacerlo posible. Apóyate de
+                                    herramientas financieras para ahorrar de manera constante y hacer crecer tu dinero.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-container-2">
+                    <div class="row align-items-center mt-5">
+                        <div class="col-md-6 order-2 order-md-1 responsive-text">
+                            <p class="text-prd">Aprende más en el curso de educación financiera que tenemos para ti:</p>
+                            <button class="button-high mt-4 mb-4"
+                                onclick="window.location.href='https://www.compartamos.com.mx/compartamos/lp/educacion-financiera/conoce-tu-personalidad/'">
+                                Conoce tu personalidad financiera
                             </button>
+                            <p class="mt-3">O comienza a ahorrar con una <br> <a
+                                    href="https://www.compartamos.com.mx/compartamos/ahorro/cuenta-basica-compartamos"
+                                    class="custom-link">Cuenta Compartamos</a></p>
+                        </div>
+                        <div class="col-md-6 order-1 order-md-2">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                                <img src="../assets/images/personalidad-financiera.jpg" alt="Imagen de ejemplo"
+                                    class="img-fluid mb-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                            <p class="text-center order-2 order-md-1 mt-3">No olvides que seguir organizando tus gastos
-                                es un gran paso para tomar el control de tu dinero. Comienza a realizar tu presupuesto y
-                                ajusta aquellos gastos que no sean necesarios.</p>
-
-                            <button id="reiniciarButton" class="button-low mt-4 order-3 order-md-2">
-                                Reiniciar calculadora
+            <!-- Modal social media -->
+            <div class="modal fade" id="guardarCompartirModal" tabindex="-1" aria-labelledby="modalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title text-center w-100 text-share-media" id="modalLabel">Guardar o
+                                compartir
+                            </h2>
+                            <!-- Icono personalizado para cerrar el modal -->
+                            <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+                                <img src="../assets/images/icons/cerrar.png" alt="Cerrar">
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <button class="btn btn-icon">
+                                <img src="../assets/images/icons/descarga.png" alt="Descargar" width="48">
+                            </button>
+                            <button class="btn btn-icon">
+                                <img src="../assets/images/icons/facebook.png" alt="Facebook" width="48">
+                            </button>
+                            <button class="btn btn-icon">
+                                <img src="../assets/images/icons/instagram.png" alt="Instagram" width="48">
                             </button>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <div class="custom-container-2">
-                <div class="row align-items-center mt-5">
-                    <div class="col-md-6 order-2 order-md-1 responsive-text">
-                        <p class="text-prd">Aprende más en el curso de educación financiera que tenemos para ti:</p>
-                        <button class="button-high mt-4 mb-4">Conoce tu personalidad financiera</button>
-                        <p class="mt-3">O comienza a ahorrar con una <br> <a href="#" class="custom-link">Cuenta
-                                Compartamos</a></p>
-                    </div>
-                    <div class="col-md-6 order-1 order-md-2">
-                        <div class="d-flex flex-column justify-content-center align-items-center">
-                            <img src="../assets/images/Rectangle 14.png" alt="Imagen de ejemplo" class="img-fluid mb-5">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </section>
+        </div>
     </div>
+
+    <!-- footer -->
+    <footer class="custom-footer">
+        <div class="container text-center">
+            <!-- Logo -->
+            <a href="https://www.compartamos.com.mx/compartamos"> <img src="../assets/images/logo_CB.png"
+                    alt="Compartamos Banco" class="footer-logo" width="120">
+            </a>
+
+            <!-- Información de la empresa -->
+            <p class="empresa-text mt-2">Una empresa de <img src="../assets/images/logo_gentera.png"
+                    alt="Compartamos Banco" class="footer-logo" width="80"></p>
+            <p class="empresa-text">© 2024 Gentera S. A. B.</p>
+
+            <!-- Enlaces -->
+            <p class="mt-2">
+                <a href="https://www.compartamos.com.mx/compartamos/regulacion/privacidad" class="footer-link">Aviso de
+                    Privacidad</a> |
+                <a href="https://www.compartamos.com.mx/compartamos/regulacion/terminos-y-condiciones"
+                    class="footer-link">Términos y Condiciones</a>
+            </p>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/scripts.js"></script>

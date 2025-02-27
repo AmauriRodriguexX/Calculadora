@@ -46,12 +46,11 @@
      }
 
      #continueButton {
-          position: fixed;
-          width: 95%;
+          width: 100%;
           bottom: 24px;
           left: 50%;
-          transform: translateX(-50%);
           z-index: 1000;
+          margin-bottom: 50px;
           /* Para asegurarte de que esté por encima del resto */
      }
 

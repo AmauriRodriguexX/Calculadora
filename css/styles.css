@@ -140,6 +140,18 @@
 }
 
 
+html, body {
+     height: 100%;
+     margin: 0;
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ /* Contenedor principal que empuja el footer hacia abajo */
+ .main-content {
+     flex: 1; /* Esto hace que el contenido crezca y empuje el footer */
+ }
+
 
 h1,
 h2,
@@ -202,6 +214,21 @@ span.light {
 p.thin,
 span.thin {
      font-weight: 100;
+}
+
+/* Estilos para el header */
+.custom-header {
+     background: white;
+     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+     /* Drop Shadow */
+     padding: 10px 0;
+     text-align: center;
+     height: 72px;
+}
+
+.logo {
+     max-width: 180px;
+     /* Ajusta el tamaño del logo */
 }
 
 .hide {
@@ -446,7 +473,7 @@ span.thin {
 .outlined-text-field input,
 .filled-text-field input,
 .standard-text-field input {
-     width: 250px;
+     width: 318px;
      height: 56px;
      padding: 10px 10px 10px 30px;
      border: 1px solid #AFB3B6;
@@ -891,3 +918,102 @@ input[type=number]::-webkit-inner-spin-button {
      font-weight: 400;
      line-height: normal;
 }
+
+
+/* Estilos para el botón de cerrar personalizado */
+.btn-close-custom {
+     background: none;
+     border: none;
+     position: absolute;
+     top: 10px;
+     right: 10px;
+     width: 30px;
+     height: 30px;
+     cursor: pointer;
+}
+
+.btn-close-custom img {
+     width: 100%;
+     height: auto;
+     transition: transform 0.2s ease-in-out;
+}
+
+.btn-close-custom img:hover {
+     transform: scale(1.1);
+}
+
+
+@media (min-width: 576px) {
+     .modal-sm {
+          --bs-modal-width: 427px;
+     }
+}
+
+
+.text-share-media {
+     font-size: 24px !important;
+}
+
+
+.gasto-btn img {
+     width: 24px;
+     height: 24px;
+}
+
+.dream-icon img {
+     width: 24px;
+     height: 24px;
+     margin-top: 20px;
+}
+
+
+/* Estilos para el footer */
+.custom-footer {
+     background: white;
+     padding: 20px 0;
+     box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.1); /* Sombra superior */
+     text-align: center;
+     width: 100%;
+     margin-top: auto; /* Esto mantiene el footer pegado abajo */
+ }
+ 
+ /* Logo de Compartamos Banco */
+ .footer-logo {
+     max-width: 120px;
+     transform: translate(0, -4px); /* Ajusta la posición */
+ }
+ 
+ /* Contenedor de la empresa */
+ .empresa-text {
+     color: #333;
+     font-size: 14px;
+     margin-bottom: 5px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 8px; /* Espacio entre el texto y el logo */
+ }
+ 
+ /* Logo de Gentera dentro del texto */
+ .footer-gentera-logo {
+     max-width: 70px;
+     height: auto;
+     display: inline-block;
+     vertical-align: middle;
+ }
+ 
+ /* Estilos para los enlaces */
+ .footer-link {
+     color: #CE0058;
+     font-size: 14px;
+     text-decoration: underline;
+ }
+ 
+
+ /* Quitar el comportamiento fijo en móviles */
+@media (max-width: 767px) {
+     .custom-footer {
+         position: static; /* Hace que no sea fijo en móviles */
+         margin-top: 60px; /* Evita separación innecesaria */
+     }
+ }
