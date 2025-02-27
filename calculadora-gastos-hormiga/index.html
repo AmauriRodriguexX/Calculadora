@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/desktp-mobile.css">
+  <link rel="stylesheet" href="../css/chart.css">
 </head>
 
 <body>
@@ -18,6 +19,7 @@
       <p class="text-end p-tab-next-step hide-mobile">Paso 1 de 3</p>
     </div>
     <h1 class="text-center">Calculadoras Financieras 1</h1>
+    <!-- tabs -->
     <nav class="tabs">
       <!-- Gastos hormiga -->
       <a href="../calculadora-gastos-hormiga/index.html" class="tab-item active">
@@ -37,11 +39,10 @@
       <p class="text-center p-tab-next-step hide-desktop-full">Paso 1 de 3</p>
     </div>
 
-
     <!-- Sección 1: Ingresar ingresos -->
     <section id="desktop1" class="calculadora-section hide">
       <div class="d-flex justify-content-center align-items-center">
-        <img src="../assets/images/icon-gastos 2.png" class="img-fluid mt-5" alt="Descripción de la imagen" width="134">
+        <img src="../assets/images/icon-gastos 2.png" class="img-fluid mt-4" alt="Descripción de la imagen" width="134">
       </div>
       <br>
       <p class="center-d-left-m">Los gastos hormiga son pequeñas compras que parecen no afectar a tu economía
@@ -62,7 +63,6 @@
       </div>
     </section>
 
-
     <!-- Sección 2: Agregar gastos -->
     <section id="desktop2" class="calculadora-section container text-center">
       <p class="mb-1 mt-5 subtitle-01">Agrega tus gastos</p>
@@ -74,37 +74,37 @@
       <div class="row row-cols-3 justify-content-center grid-container mt-4">
         <div class="col">
           <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="cafes">
-            <img src="../assets/images/icons/coffe.png" alt="Cafés" width="40" class="mb-2">
+            <img src="../assets/images/icons/coffe.png" alt="Cafés" class="mb-2">
             <span>Cafés</span>
           </button>
         </div>
         <div class="col">
           <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="plataformas">
-            <img src="../assets/images/icons/play.png" alt="Plataformas" width="40" class="mb-2">
+            <img src="../assets/images/icons/play.png" alt="Plataformas" class="mb-2">
             <span>Plataformas</span>
           </button>
         </div>
         <div class="col">
           <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="compras">
-            <img src="../assets/images/icons/clic.png" alt="Compras en línea" width="40" class="mb-2">
+            <img src="../assets/images/icons/clic.png" alt="Compras en línea" class="mb-2">
             <span>Compras en línea</span>
           </button>
         </div>
         <div class="col">
           <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="refrescos">
-            <img src="../assets/images/icons/bebidas.png" alt="Refrescos" width="40" class="mb-2">
+            <img src="../assets/images/icons/bebidas.png" alt="Refrescos" class="mb-2">
             <span>Refrescos</span>
           </button>
         </div>
         <div class="col">
           <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="cigarros">
-            <img src="../assets/images/icons/cigarrete.png" alt="Cigarros" width="40" class="mb-2">
+            <img src="../assets/images/icons/cigarrete.png" alt="Cigarros" class="mb-2">
             <span>Cigarros</span>
           </button>
         </div>
         <div class="col">
           <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="otros">
-            <img src="../assets/images/icons/car.png" alt="Otros" width="40" class="mb-2">
+            <img src="../assets/images/icons/car.png" alt="Otros" class="mb-2">
             <span>Otros</span>
           </button>
         </div>
@@ -116,12 +116,12 @@
       </div>
 
       <!-- Botones de acción -->
-      <div class="d-flex flex-column justify-content-center align-items-center mt-3">
+      <div class="action-buttons d-flex flex-column justify-content-center align-items-center mt-3">
         <button id="finalizarButton" class="button mt-2" disabled>Finalizar</button>
         <button id="reiniciarButton" class="button-low mt-2" disabled>Reiniciar calculadora</button>
       </div>
-    </section>
 
+    </section>
 
     <!-- Sección 3: Resumen -->
     <section id="desktop3" class="calculadora-section">
@@ -131,10 +131,10 @@
           <div class="col-12 col-md-6">
             <div class="responsive-text w-100">
               <p class="hormiga-text">Eres una hormiga:</p>
-              <h4 class="fw-bold text-danger">Gastalona</h4>
+              <h4 class="fw-bold">Gastalona</h4>
               <p class="text-variant-01">¡Fumiga estos gastos!<br>Tus gastos hormiga están elevados</p>
               <p class="text-variant-01">Representa un:</p>
-              <h4 class="fw-bold text-danger fs-4">55%</h4>
+              <h4 class="fw-bold">55%</h4>
               <p class="text-variant-01">de tus ingresos mensuales.</p>
             </div>
           </div>
@@ -193,111 +193,13 @@
 
     </section>
 
-
-
-
   </div>
 
-
-
-
-
-
-
-
-  <SCript>
-    function updateChart(income, expenses) {
-      const total = income + expenses;
-      if (total === 0) return;
-
-      const incomePercentage = (income / total) * 100;
-
-      // Asigna el porcentaje como variable CSS
-      document.documentElement.style.setProperty('--income-percentage', `${incomePercentage}%`);
-    }
-
-    // 🚀 Cargar datos desde localStorage
-    const income = parseFloat(localStorage.getItem('income')) || 3000;
-    const expenses = parseFloat(localStorage.getItem('expenses')) || 1000;
-
-    // Inicializa el gráfico
-    updateChart(income, expenses);
-
-  </SCript>
-
-
-
-
-
+  <!-- Scripts -->
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="../js/scripts.js"></script>
-  <!-- Asegúrate de colocar este script justo antes de cerrar la etiqueta </body> -->
-
-
-  <script>
-    // Función para mostrar una sección en particular
-    function mostrarSeccion(numero) {
-      document.querySelectorAll('.calculadora-section').forEach(seccion => {
-        seccion.style.display = 'none';
-      });
-      document.getElementById(`desktop${numero}`).style.display = 'block';
-    }
-
-    // Guarda los ingresos y muestra la sección 2
-    function guardarIngresos() {
-      let ingresos = document.getElementById("ingresos").value;
-      if (ingresos.trim() === "") {
-        return; // Si no hay valor, no se continúa
-      }
-      localStorage.setItem("ingresos", ingresos);
-      mostrarSeccion(2);
-    }
-
-    // Manejo de la habilitación del botón "Continuar" basado en el input
-    document.addEventListener('DOMContentLoaded', function () {
-      // Muestra la sección 1 al cargar la página
-      mostrarSeccion(1);
-
-      const ingresosInput = document.getElementById('ingresos');
-      const continueButton = document.getElementById('continueButton');
-
-      ingresosInput.addEventListener('input', function () {
-        continueButton.disabled = ingresosInput.value.trim() === '';
-      });
-    });
-
-    // Resto de las funciones (agregarGasto, actualizarListaGastos, calcularTotales) se mantienen igual
-    function agregarGasto() {
-      let nombre = document.getElementById("nombre-gasto").value;
-      let valor = document.getElementById("valor-gasto").value;
-      if (nombre && valor) {
-        let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
-        gastos.push({ nombre, valor: parseFloat(valor) });
-        localStorage.setItem("gastos", JSON.stringify(gastos));
-        actualizarListaGastos();
-      }
-    }
-
-    function actualizarListaGastos() {
-      let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
-      let lista = document.getElementById("lista-gastos");
-      lista.innerHTML = "";
-      gastos.forEach(gasto => {
-        lista.innerHTML += `<li>${gasto.nombre}: $${gasto.valor} diarios</li>`;
-      });
-    }
-
-    function calcularTotales() {
-      let ingresos = parseFloat(localStorage.getItem("ingresos")) || 0;
-      let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
-      let totalMensual = gastos.reduce((acc, gasto) => acc + (gasto.valor * 30), 0);
-      let porcentaje = (totalMensual / ingresos) * 100;
-      document.getElementById("ingresos-mostrar").innerText = `$${ingresos}`;
-      document.getElementById("total-gastos").innerText = `$${totalMensual}`;
-      document.getElementById("porcentaje").innerText = `${porcentaje.toFixed(2)}%`;
-      mostrarSeccion(3);
-    }
-  </script>
+  <script src="../js/chart.js"></script>
+  <script src="../js/home-events.js"></script>
 
 </body>
 

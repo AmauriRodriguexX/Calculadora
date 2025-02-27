@@ -1,120 +1,258 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Gastos Hormiga</title>
-    
+
     <!-- Bootstrap y Estilos CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/desktp-mobile.css">
+    <link rel="stylesheet" href="../css/chart.css">
 </head>
+
 <body>
     <div class="container mt-top-100-40">
-     <div class="text-end">
-          <p class="text-end p-tab-next-step ">Paso 1 de 3</p>
-     </div>
-        <h1 class="text-center">Calculadoras Financieras 2</h1>
-        <nav class="tabs">
+      <div class="text-end">
+        <p class="text-end p-tab-next-step hide-mobile">Paso 1 de 3</p>
+      </div>
+      <h1 class="text-center">Calculadoras Financieras 2</h1>
+      <!-- tabs -->
+      <nav class="tabs">
+        <!-- Gastos hormiga -->
+        <a href="../calculadora-gastos-hormiga/index.html" class="tab-item ">
+          Gastos hormiga
+        </a>
+  
+        <!-- Organizando gastos -->
+        <a href="../calculadora-organizando-mis-gastos/index.html" class="tab-item active">
+          Organizando gastos
+        </a>
+  
+        <!-- Alcanzando sueños -->
+        <a href="../calculadora-alcanzando-mis-suenos/index.html" class="tab-item">Alcanzando sueños
+        </a>
+      </nav>
+      <div class="text-end">
+        <p class="text-center p-tab-next-step hide-desktop-full">Paso 1 de 3</p>
+      </div>
+  
+      <!-- Sección 1: Ingresar ingresos -->
+      <section id="desktop1" class="calculadora-section hide">
+        <div class="d-flex justify-content-center align-items-center">
+          <img src="../assets/images/house.png" class="img-fluid mt-4" alt="Descripción de la imagen" width="134">
+        </div>
+        <br>
+        <p class="center-d-left-m">¿Sientes que el dinero no te rinde? Esta calculadora te ayudará a organizar tu dinero y sacarle el mayor provecho.</p>
+        <div class="d-flex justify-content-center align-items-center">
+          <!-- Número con símbolo de $ -->
+          <div class="outlined-text-field currency-wrapper">
+            <!-- Usamos type="text" para poder mostrar las comas -->
+            <input type="text" id="number" placeholder=" " min="0" max="100">
+            <label for="number">Ingresos mensuales</label>
+            <span>$</span>
+          </div>
+  
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <button id="continueButton" class="button mt-3" disabled>Continuar</button>
+        </div>
+      </section>
+  
+      <!-- Sección 2: Agregar gastos -->
+      <section id="desktop2" class="calculadora-section container text-center">
+        <p class="mb-1 mt-5 subtitle-01">Agrega tus gastos</p>
+  
+        <!-- Botón para mostrar la grid -->
+        <button class="btn-agregar">+ agregar</button>
+  
+        <!-- Grid de iconos con texto (oculto al inicio) -->
+        <div class="row row-cols-3 row-cols-md-4 justify-content-center grid-container mt-4">
+          <!-- Renta -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="renta">
+              <img src="../assets/images/icons/renta.png" alt="Renta" class="mb-2">
+              <span>Renta</span>
+            </button>
+          </div>
+          <!-- Comidas -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="comidas">
+              <img src="../assets/images/icons/comidas.png" alt="Comidas" class="mb-2">
+              <span>Comidas</span>
+            </button>
+          </div>
+          <!-- Servicios -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="servicios">
+              <img src="../assets/images/icons/servicios.png" alt="Servicios" class="mb-2">
+              <span>Servicios</span>
+            </button>
+          </div>
+          <!-- Educación -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="educacion">
+              <img src="../assets/images/icons/educacion.png" alt="Educación" class="mb-2">
+              <span>Educación</span>
+            </button>
+          </div>
+          <!-- Transporte -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="transporte">
+              <img src="../assets/images/icons/transporte.png" alt="Transporte" class="mb-2">
+              <span>Transporte</span>
+            </button>
+          </div>
+          <!-- Créditos -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="creditos">
+              <img src="../assets/images/icons/creditos.png" alt="Créditos" class="mb-2">
+              <span>Créditos</span>
+            </button>
+          </div>
+          <!-- Despensa -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="despensa">
+              <img src="../assets/images/icons/despensa.png" alt="Despensa" class="mb-2">
+              <span>Despensa</span>
+            </button>
+          </div>
+          <!-- Diversión -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="diversion">
+              <img src="../assets/images/icons/diversion.png" alt="Diversión"  class="mb-2">
+              <span>Diversión</span>
+            </button>
+          </div>
+          <!-- Ropa -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="ropa">
+              <img src="../assets/images/icons/ropa.png" alt="Ropa" class="mb-2">
+              <span>Ropa</span>
+            </button>
+          </div>
+          <!-- Cuidado personal -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="cuidadoPersonal">
+              <img src="../assets/images/icons/cuidado-personal.png" alt="Cuidado personal" class="mb-2">
+              <span>Cuidado personal</span>
+            </button>
+          </div>
+          <!-- Salud -->
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="salud">
+              <img src="../assets/images/icons/salud.png" alt="Salud"  class="mb-2">
+              <span>Salud</span>
+            </button>
+          </div>
           <!-- Gastos hormiga -->
-          <a href="../calculadora-gastos-hormiga/index.html" 
-            class="tab-item">
-            Gastos hormiga
-          </a>
-          
-          <!-- Organizando gastos -->
-          <a href="../calculadora-organizando-mis-gastos/index.html" 
-            class="tab-item active">
-            Organizando gastos
-          </a>
-          
-          <!-- Alcanzando sueños -->
-          <a href="../calculadora-alcanzando-mis-suenos/index.html" 
-            class="tab-item">Alcanzando sueños
-          </a>
-        </nav>
+          <div class="col">
+            <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn" data-gasto="gastosHormiga">
+              <img src="../assets/images/icons/gastos-hormiga.png" alt="Gastos hormiga" class="mb-2">
+              <span>Gastos hormiga</span>
+            </button>
+          </div>
+        </div>
         
-        <!-- Sección 1: Ingresar ingresos -->
-        <section id="desktop1" class="calculadora-section">
-            <h2>Paso 1 de 3</h2>
-            <label for="ingresos">Ingresos mensuales:</label>
-            <input type="number" id="ingresos" class="form-control" placeholder="Ingresa tu salario">
-            <button class="btn btn-primary mt-3" onclick="guardarIngresos()">Continuar</button>
-        </section>
-
-        <!-- Sección 2: Agregar gastos -->
-        <section id="desktop2" class="calculadora-section">
-            <h2>Paso 2 de 3</h2>
-            <p>Agrega tus gastos</p>
-            <input type="text" id="nombre-gasto" class="form-control" placeholder="Ejemplo: Café">
-            <input type="number" id="valor-gasto" class="form-control mt-2" placeholder="Monto diario">
-            <button class="btn btn-success mt-2" onclick="agregarGasto()">+ Agregar</button>
-            <ul id="lista-gastos" class="mt-3"></ul>
-            <button class="btn btn-primary mt-3" onclick="calcularTotales()">Siguiente</button>
-        </section>
-
-        <!-- Sección 3: Resumen -->
-        <section id="desktop3" class="calculadora-section">
-            <h2>Paso 3 de 3</h2>
-            <p><strong>Ingresos Mensuales:</strong> <span id="ingresos-mostrar">$0</span></p>
-            <p><strong>Total Gastos:</strong> <span id="total-gastos">$0</span></p>
-            <p><strong>Porcentaje Gastado:</strong> <span id="porcentaje">0%</span></p>
-            <button class="btn btn-secondary" onclick="mostrarSeccion(2)">Atrás</button>
-            <button class="btn btn-success">Guardar o Compartir</button>
-        </section>
+  
+        <!-- Contenedor para campos de gasto generados -->
+        <div id="gastos-container" class="mt-4" style="display: none;">
+          <div id="only-tatal"></div>
+        </div>
+  
+        <!-- Botones de acción -->
+        <div class="action-buttons d-flex flex-column justify-content-center align-items-center mt-3">
+          <button id="finalizarButton" class="button mt-2" disabled>Finalizar</button>
+          <button id="reiniciarButton" class="button-low mt-2" disabled>Reiniciar calculadora</button>
+        </div>
+      </section>
+  
+      <!-- Sección 3: Resumen -->
+      <section id="desktop3" class="calculadora-section">
+        <div class="custom-container">
+          <div class="row m-top-20">
+            <!-- Datos a la izquierda -->
+            <!-- Datos a la izquierda -->
+            <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center text-center">
+              <div class="responsive-text w-100">
+                <p class="hormiga-text">Tienes un saldo:</p>
+                <h4 class="fw-bold">Positivo</h4>
+                <p class="text-variant-01"><strong>¡Felicidades eres muy bueno organizando tus finanzas!</strong><br>Tus
+                  ingresos son mayores a tus gastos.</p>
+                <p class="text-variant-01">Tu balance:</p>
+                <h4 class="fw-bold">$26,000</h4>
+                <p class="text-variant-01">de tus ingresos mensuales.</p>
+              </div>
+            </div>
+      
+      
+            <!-- Gráfica a la derecha -->
+            <div class="col-12 col-md-6">
+              <div class="d-flex flex-column align-items-center justify-content-center">
+                <!-- Contenedor del Gráfico Donut -->
+                <div class="donut-chart">
+                  <div class="donut"></div>
+                  <div class="donut-center"></div> <!-- Centro vacío para el efecto donut -->
+                  <div class="percent-labels"></div> <!-- Contenedor de etiquetas de porcentaje -->
+                </div>
+      
+                <!-- Leyenda -->
+                <div class="legend">
+                  <div><span class="color rent"></span> Renta</div>
+                  <div><span class="color services"></span> Pago de servicios</div>
+                  <div><span class="color health"></span> Salud</div>
+                  <div><span class="color extras"></span> Gastos hormiga</div>
+                  <div><span class="color fun"></span> Diversión</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-5">
+              <div class="d-flex flex-column flex-md-column align-items-center justify-content-center botones-container">
+                <button class="btn-guardar-compartir order-1 order-md-1 mb-3  ">
+                  <span>Guardar o compartir</span>
+                  <img src="../assets/images/icons/compartir.png" alt="Compartir" class="icono-compartir">
+                </button>
+      
+                <p class="text-center order-2 order-md-1 mt-3">No olvides que seguir organizando tus gastos es un gran paso para tomar el control de tu dinero. Comienza a realizar tu presupuesto y ajusta aquellos gastos que no sean necesarios.</p>
+      
+                <button id="reiniciarButton" class="button-low mt-4 order-3 order-md-2">
+                  Reiniciar calculadora
+                </button>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      
+        <div class="custom-container-2">
+          <div class="row align-items-center mt-5">
+            <div class="col-md-6 order-2 order-md-1 responsive-text">
+              <p class="text-prd">Aprende más en el curso de educación financiera que tenemos para ti:</p>
+              <button class="button-high mt-4 mb-4">Conoce tu personalidad financiera</button>
+              <p class="mt-3">O comienza a ahorrar con una <br> <a href="#" class="custom-link">Cuenta Compartamos</a></p>
+            </div>
+            <div class="col-md-6 order-1 order-md-2">
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="../assets/images/Rectangle 14.png" alt="Imagen de ejemplo" class="img-fluid mb-5">
+      
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      
+      </section>
+  
     </div>
-
+  
     <!-- Scripts -->
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <script>
-        function mostrarSeccion(numero) {
-            document.querySelectorAll('.calculadora-section').forEach(seccion => {
-                seccion.style.display = 'none';
-            });
-            document.getElementById(`desktop${numero}`).style.display = 'block';
-        }
+    <script src="../js/scripts.js"></script>
+    <script src="../js/chart.js"></script>
+    <script src="../js/home-events.js"></script>
+  
+  </body>
 
-        function guardarIngresos() {
-            let ingresos = document.getElementById("ingresos").value;
-            localStorage.setItem("ingresos", ingresos);
-            mostrarSeccion(2);
-        }
-
-        function agregarGasto() {
-            let nombre = document.getElementById("nombre-gasto").value;
-            let valor = document.getElementById("valor-gasto").value;
-            if (nombre && valor) {
-                let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
-                gastos.push({ nombre, valor: parseFloat(valor) });
-                localStorage.setItem("gastos", JSON.stringify(gastos));
-                actualizarListaGastos();
-            }
-        }
-
-        function actualizarListaGastos() {
-            let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
-            let lista = document.getElementById("lista-gastos");
-            lista.innerHTML = "";
-            gastos.forEach(gasto => {
-                lista.innerHTML += `<li>${gasto.nombre}: $${gasto.valor} diarios</li>`;
-            });
-        }
-
-        function calcularTotales() {
-            let ingresos = parseFloat(localStorage.getItem("ingresos")) || 0;
-            let gastos = JSON.parse(localStorage.getItem("gastos")) || [];
-            let totalMensual = gastos.reduce((acc, gasto) => acc + (gasto.valor * 30), 0);
-            let porcentaje = (totalMensual / ingresos) * 100;
-            document.getElementById("ingresos-mostrar").innerText = `$${ingresos}`;
-            document.getElementById("total-gastos").innerText = `$${totalMensual}`;
-            document.getElementById("porcentaje").innerText = `${porcentaje.toFixed(2)}%`;
-            mostrarSeccion(3);
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            mostrarSeccion(1);
-        });
-    </script>
-</body>
 </html>

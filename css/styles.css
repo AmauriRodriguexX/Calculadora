@@ -144,7 +144,8 @@
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
      font-family: 'Bree', sans-serif;
      color: #CA0059 !important;
 }
@@ -171,6 +172,11 @@ h4 {
      font-size: 18px;
 }
 
+
+h5 {
+     font-weight: normal;
+     font-size: 14px;
+}
 
 p,
 span {
@@ -328,6 +334,14 @@ span.thin {
      cursor: pointer;
 }
 
+/* Ancho del 100% solo en móviles (hasta 767px de ancho) */
+@media (max-width: 767px) {
+     .button-high {
+          width: 100%;
+     }
+}
+
+
 .button-low {
      width: 324px;
      height: 52px;
@@ -343,14 +357,23 @@ span.thin {
      transition: 0.3s;
 }
 
+@media (max-width: 767px) {
+     .button-low {
+          width: 100%;
+     }
+}
+
 .button-low:disabled {
      color: #908A8A;
      border: 1px solid #908A8A;
-     background: #ffffff; /* Manteniendo el fondo blanco */
-     cursor: not-allowed; /* Ya está en tu estilo base */
-     opacity: 1; /* Asegura que no se reduzca la opacidad */
- }
- 
+     background: #ffffff;
+     /* Manteniendo el fondo blanco */
+     cursor: not-allowed;
+     /* Ya está en tu estilo base */
+     opacity: 1;
+     /* Asegura que no se reduzca la opacidad */
+}
+
 
 
 .btn-agregar {
@@ -544,19 +567,16 @@ input[type=number]::-webkit-inner-spin-button {
      }
 }
 
-/* Estilos base para la estructura */
-.grid-container {
+.grid-container-2 {
      width: 100%;
      margin: 0 auto;
 }
 
 @media (min-width: 769px) {
-     .grid-container {
-          max-width: 300px;
+     .grid-container-2 {
+          max-width: 440px;
      }
 }
-
-
 
 .trash-icon {
      cursor: pointer;
@@ -576,6 +596,7 @@ input[type=number]::-webkit-inner-spin-button {
 .total-section p {
      margin: 2px 0;
      font-size: 14px;
+     font-weight: 700;
 }
 
 .total-section strong {
@@ -615,21 +636,104 @@ input[type=number]::-webkit-inner-spin-button {
      line-height: normal;
 }
 
-.total-seciton-p .number-section p {
-     color: #CA0059;
-     text-align: left;
-     font-family: Inter;
-     font-size: 14px;
-     font-style: normal;
-     font-weight: 700;
-     line-height: normal;
-}
-
 .total-seciton-p .number-section span {
      font-family: Inter;
      font-size: 14px;
      text-align: right;
 }
+
+
+
+.color-total-day {
+     color: #CA0059 !important;
+     font-weight: 700;
+}
+
+
+@media (max-width: 768px) {
+     .input-seciont-add {
+          display: flex;
+          flex-direction: column;
+          /* Apila los elementos verticalmente */
+          align-items: flex-start;
+          gap: 12px;
+     }
+
+     .input-seciont-add .d-flex.align-items-center {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 8px;
+     }
+
+     .info-input {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          width: 35%;
+     }
+
+     .info-input img {
+          width: 24px;
+     }
+
+     .info-input span {
+          font-size: 14px;
+     }
+
+     .outlined-text-field.currency-wrapper {
+          flex-grow: 1;
+     }
+
+     .outlined-text-field input {
+          width: 100%;
+          font-size: 14px;
+          padding: 24px;
+     }
+
+     .trash-icon {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+     }
+
+     .total-section {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: right;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 300px;
+          margin-bottom: 32px;
+     }
+
+
+     /* Sección de totales */
+     .total-seciton-p {
+          display: flex;
+          justify-content: center;
+     }
+
+     .total-seciton-p .number-section {
+          text-align: left;
+          /* Asegura que el texto dentro no se centre */
+     }
+
+     .total-seciton-p .number-section p {
+          font-size: 14px;
+          font-weight: 600;
+          color: #444444;
+          margin: 4px 0;
+     }
+
+     .total-seciton-p .number-section span {
+          font-size: 14px;
+          color: #000000;
+     }
+}
+
 
 .btn-agregar {
      display: block;
@@ -637,77 +741,6 @@ input[type=number]::-webkit-inner-spin-button {
      margin-top: 16px;
 }
 
-
-.pie-chart {
-     position: relative;
-     width: 200px;
-     height: 200px;
-     border-radius: 50%;
-     transform: rotate(-270deg);
-     /* Gira la gráfica para que el inicio esté a la derecha */
-}
-
-
-.slice {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     border-radius: 50%;
-}
-
-.slice.magenta {
-     background: conic-gradient(#C30054 0% var(--income-percentage),
-               transparent var(--income-percentage) 100%);
-     /* Borde magenta (pastel completo) */
-     z-index: 1;
-}
-
-.slice.orange {
-     /* Fondo con gradiente cónico para representar la rebanada */
-     background: conic-gradient(transparent 0% var(--income-percentage),
-               #FFA500 var(--income-percentage) 100%);
-
-     /* Asegura que esta rebanada esté por encima de otras capas */
-     border: 2px solid #ffffff;
-     transform: translate(-5px, -5px);
-
-}
-
-.legend {
-     display: flex;
-     flex-direction: column;
-     font-family: Arial, sans-serif;
-     font-size: 16px;
-     color: #5C5C5C;
-     /* Color de texto similar al de la imagen */
-     margin-top: 10px;
-}
-
-.legend div {
-     display: flex;
-     align-items: center;
-     margin: 6px 0;
-}
-
-.legend .color {
-     display: inline-block;
-     width: 12px;
-     height: 12px;
-     border-radius: 50%;
-     margin-right: 8px;
-}
-
-.legend .income {
-     background-color: #C30054;
-     /* Magenta para ingreso */
-}
-
-.legend .expenses {
-     background-color: #FFA500;
-     /* Naranja para gastos */
-}
 
 .hormiga-text {
      color: #625C5C;
@@ -784,6 +817,7 @@ input[type=number]::-webkit-inner-spin-button {
      font-weight: 400;
      line-height: normal;
 }
+
 .custom-link {
      color: #189CE9;
      font-family: Inter;
@@ -802,21 +836,54 @@ input[type=number]::-webkit-inner-spin-button {
 
 @media (max-width: 767.98px) {
      .botones-container {
-       display: flex;
-       flex-direction: column;
+          display: flex;
+          flex-direction: column;
      }
-   
+
      .botones-container .btn-guardar-compartir {
-       order: 1;
+          order: 1;
      }
-   
+
      .botones-container p {
-       order: 2;
-       margin-top: 16px;
+          order: 2;
+          margin-top: 16px;
      }
-   
+
      .botones-container #reiniciarButton {
-       order: 3;
+          order: 3;
      }
-   }
-   
+}
+
+
+.variable-text-strong {
+     color: #625C5C;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+}
+
+
+.number-text-progres {
+     margin-top: 24px;
+     color: #625C5C;
+     text-align: center;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+}
+
+
+.text-dream-head {
+     margin-top: 8px;
+     color: #908A8A;
+     text-align: center;
+     font-family: Inter;
+     font-size: 14px;
+     font-style: normal;
+     font-weight: 400;
+     line-height: normal;
+}
