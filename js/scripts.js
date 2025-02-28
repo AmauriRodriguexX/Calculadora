@@ -101,27 +101,61 @@ pTabSteps.forEach(el => {
   const gastoButtons = desktop1.querySelectorAll('.gasto-btn');
   gastoButtons.forEach(btn => {
     btn.addEventListener('click', function() {
-      // Ocultar la grid de botones
-      if (gridContainer) gridContainer.style.setProperty('display', 'none', 'important');
+      // Ocultar la grid y mostrar el área de detalle
+      gridContainer.style.setProperty('display', 'none', 'important');
+      iconContainer.style.setProperty('display', 'block', 'important');
+      sliderContainer.style.setProperty('display', 'block', 'important');
+      actionButtons.style.setProperty('display', 'flex', 'important');
       
-      // Mostrar el área de detalle (ícono, sliders y botones de acción)
-      if (iconContainer) iconContainer.style.setProperty('display', 'block', 'important');
-      if (sliderContainer) sliderContainer.style.setProperty('display', 'block', 'important');
-      if (actionButtons) actionButtons.style.setProperty('display', 'flex', 'important');
-      
-      // Actualizar el ícono o el texto de la opción seleccionada
+      // Obtener la opción y actualizar el texto
       const opcion = btn.querySelector('span').innerText;
-      const dreamsText = iconContainer ? iconContainer.querySelector('.dreams-text') : null;
+      const dreamsText = iconContainer.querySelector('.dreams-text');
       if (dreamsText) {
         dreamsText.innerText = opcion;
       }
       
-      // Actualizar la numeración a "Paso 2 de 3"
+      // Actualizar el ícono según el atributo data-icon o basado en el texto
+      const iconImg = iconContainer.querySelector('img');
+      let iconFile = btn.getAttribute('data-icon'); // Usando data-icon, si lo definiste
+      
+      // Si no usas data-icon, puedes definirlo con un switch:
+      if (!iconFile) {
+        switch (opcion.toLowerCase()) {
+          case 'viajes':
+            iconFile = 'viaje.png';
+            break;
+          case 'estudios':
+            iconFile = 'estudios.png';
+            break;
+          case 'ahorro':
+            iconFile = 'ahorro.png';
+            break;
+          case 'casa':
+            iconFile = 'casa.png';
+            break;
+          case 'negocio':
+            iconFile = 'negocio.png';
+            break;
+          case 'otro':
+            iconFile = 'otro.png';
+            break;
+          default:
+            iconFile = 'default.png';
+        }
+      }
+      
+      if (iconImg && iconFile) {
+        iconImg.setAttribute('src', `../assets/images/icons/${iconFile}`);
+        iconImg.setAttribute('alt', opcion);
+      }
+      
+      // Actualizar el paso a "Paso 2 de 3"
       pTabSteps.forEach(el => {
         el.innerText = "Paso 2 de 3";
       });
     });
   });
+  
   
 
   // Acción del botón "Finalizar": si está habilitado, actualizar el paso y enviar a desktop2
@@ -176,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttonsContainer = document.querySelector('#desktop2 .action-buttons');
     
     // Configuración inicial: posición absoluta
-    buttonsContainer.style.position = 'absolute';
+    buttonsContainer.style.position = 'unset';
     buttonsContainer.style.bottom = '24px';
     buttonsContainer.style.left = '16px';
     buttonsContainer.style.right = '16px';
@@ -397,10 +431,9 @@ document.addEventListener('DOMContentLoaded', function() {
       gastosHormiga: 'gastos-hormiga.png'
     };
   
-    // Para Index 1 siempre "Gasto diario"
     let labelText = "Gasto diario";
     if (!window.location.pathname.includes("calculadora-gastos-hormiga")) {
-      labelText = document.getElementById('only-tatal') ? "Gastos mensuales" : "Gasto diario";
+      labelText = document.getElementById('only-tatal') ? "Gastos mensual" : "Gasto diario";
     }
   
     let detallesGasto = '';
