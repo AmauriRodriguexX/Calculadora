@@ -101,24 +101,23 @@ pTabSteps.forEach(el => {
   const gastoButtons = desktop1.querySelectorAll('.gasto-btn');
   gastoButtons.forEach(btn => {
     btn.addEventListener('click', function() {
-      // Ocultar la grid y mostrar el área de detalle
+      // Ocultar la grid y mostrar el área de detalle (sección 1)
       gridContainer.style.setProperty('display', 'none', 'important');
       iconContainer.style.setProperty('display', 'block', 'important');
       sliderContainer.style.setProperty('display', 'block', 'important');
       actionButtons.style.setProperty('display', 'flex', 'important');
-      
-      // Obtener la opción y actualizar el texto
+  
+      // Obtener la opción y actualizar el texto en la sección 1
       const opcion = btn.querySelector('span').innerText;
       const dreamsText = iconContainer.querySelector('.dreams-text');
       if (dreamsText) {
         dreamsText.innerText = opcion;
       }
-      
+  
       // Actualizar el ícono según el atributo data-icon o basado en el texto
       const iconImg = iconContainer.querySelector('img');
-      let iconFile = btn.getAttribute('data-icon'); // Usando data-icon, si lo definiste
-      
-      // Si no usas data-icon, puedes definirlo con un switch:
+      let iconFile = btn.getAttribute('data-icon'); // Ejemplo usando data-icon
+  
       if (!iconFile) {
         switch (opcion.toLowerCase()) {
           case 'viajes':
@@ -143,18 +142,33 @@ pTabSteps.forEach(el => {
             iconFile = 'default.png';
         }
       }
-      
+  
       if (iconImg && iconFile) {
         iconImg.setAttribute('src', `../assets/images/icons/${iconFile}`);
         iconImg.setAttribute('alt', opcion);
       }
-      
+  
+      // Actualizar también la sección 2 (resumen)
+      const desktop2Dream = document.getElementById('desktop2-dream');
+      if (desktop2Dream) {
+        const imgDesktop2 = desktop2Dream.querySelector('img');
+        const pDesktop2 = desktop2Dream.querySelector('p');
+        if (imgDesktop2) {
+          imgDesktop2.setAttribute('src', `../assets/images/icons/${iconFile}`);
+          imgDesktop2.setAttribute('alt', opcion);
+        }
+        if (pDesktop2) {
+          pDesktop2.innerText = opcion;
+        }
+      }
+  
       // Actualizar el paso a "Paso 2 de 3"
       pTabSteps.forEach(el => {
         el.innerText = "Paso 2 de 3";
       });
     });
   });
+  
   
   
 
