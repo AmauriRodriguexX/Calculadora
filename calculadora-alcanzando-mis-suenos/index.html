@@ -17,9 +17,9 @@
 
     <header class="custom-header">
         <a href="https://www.compartamos.com.mx/compartamos">
-          <img src="../assets/images/logo_CB.png" alt="Logo" class="logo" width="120">
+            <img src="../assets/images/logo_CB.png" alt="Logo" class="logo" width="120">
         </a>
-      </header>
+    </header>
 
     <div class="main-content">
         <div class="container mt-top-100-40">
@@ -89,7 +89,7 @@
                         <button class="btn w-100 py-3 d-flex flex-column align-items-center gasto-btn"
                             data-gasto="otros">
                             <img src="../assets/images/icons/otro.png" alt="Otros" class="mb-2">
-                            <span>Otros</span>
+                            <span>Otro</span>
                         </button>
                     </div>
                 </div>
@@ -148,12 +148,24 @@
 
                         <div class="col-12 col-md-6 text-center text-md-start">
                             <p class="savings-info">Para alcanzar mis sueños debo ahorrar:</p>
-                            <div class="savings-box">
-                                <p><span class="savings-label">Diariamente:</span> $34.87</p>
-                                <p><span class="savings-label">Mensualmente:</span> $1,060.61</p>
-                                <p><span class="savings-label">Anualmente:</span> $12,727.27</p>
+                            <div class="savings-box w-100 p-3 px-4 rounded shadow-sm">
+                                <p class="d-flex justify-content-between align-items-center">
+                                    <span class="savings-label fw-bold">Diariamente:</span> 
+                                    <span class="savings-amount">$34.87</span>
+                                </p>
+                                <p class="d-flex justify-content-between align-items-center">
+                                    <span class="savings-label fw-bold">Mensualmente:</span> 
+                                    <span class="savings-amount">$1,060.61</span>
+                                </p>
+                                <p class="d-flex justify-content-between align-items-center">
+                                    <span class="savings-label fw-bold">Anualmente:</span> 
+                                    <span class="savings-amount">$12,727.27</span>
+                                </p>
                             </div>
                         </div>
+                        
+                        
+                        
 
                         <!-- Los siguientes elementos no se tocan -->
                         <div class="col-12 mt-5">
@@ -171,6 +183,9 @@
                                     decidido a alcanzarlo, planifica tus finanzas para hacerlo posible. Apóyate de
                                     herramientas financieras para ahorrar de manera constante y hacer crecer tu dinero.
                                 </p>
+                                <button id="reiniciarButton" class="button-low mt-4 order-3 order-md-2">
+                                    Reiniciar calculadora
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -254,6 +269,8 @@
     </footer>
 
     <!-- Scripts -->
+   
+    <script src="../js/reinicio.js"></script>
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/scripts.js"></script>
     <script src="../js/chart.js"></script>
