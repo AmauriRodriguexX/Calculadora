@@ -41,7 +41,7 @@
 /* Fuente Bree - Semibold */
 @font-face {
      font-family: 'Bree';
-     src: url('../assets/fonts/Bree/BreeSemibold.otf') format('opentype');
+     src: url('../assets/fonts/Bree/bree-semibold.ttf') format('opentype');
      font-weight: 600;
      font-style: normal;
 }
@@ -158,23 +158,29 @@ h2,
 h3,
 h4,
 h5 {
-     font-family: 'Bree', sans-serif;
+     
      color: #CA0059 !important;
 }
 
 h1 {
+     font-size: 14px;;
+     font-style: normal;
+     font-weight: 300;
+     line-height: normal;
+     margin: 0;
+
+}
+
+h2 { 
+     font-family: 'Bree', sans-serif;
      font-size: 24px;
      font-style: normal;
      font-weight: 700;
      line-height: normal;
-
-}
-
-h2 {
-     font-weight: bold;
 }
 
 h3 {
+     font-family: 'Bree', sans-serif;
      font-weight: 600;
      /* SemiBold */
 }
@@ -255,6 +261,35 @@ span.thin {
      align-items: center;
      gap: 10px;
 }
+
+.tab-item {
+     transition:
+       background-color 0.25s ease,
+       border-color     0.25s ease,
+       color            0.25s ease,
+       transform        0.15s ease;
+   }
+   
+   .tab-item:hover:not(.active) {
+     background-color: #FFE0EE;
+     border-color:    #CA0059;
+     color:           #CA0059;
+     transform:       translateY(-2px);
+   }
+   
+   .tab-item:active {
+     transform: translateY(0);
+   }
+   
+   .tab-item.active {
+     background-color: #FFE0EE;
+     border-color:    #CA0059;
+     color:           #CA0059;
+     box-shadow:      0 2px 6px rgba(0,0,0,0.1);
+   }
+
+   
+
 
 /* Solo en pantallas pequeñas */
 @media (max-width: 768px) {
@@ -405,6 +440,24 @@ span.thin {
      /* Asegura que no se reduzca la opacidad */
 }
 
+.button:not(:disabled),
+.button-high:not(:disabled),
+.button-low:not(:disabled) {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button:not(:disabled):hover,
+.button-high:not(:disabled):hover,
+.button-low:not(:disabled):hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.button:not(.reiniciar-btn).button:not(:disabled):hover {
+     background-color: #b5004e;
+}
+
+
 
 
 .btn-agregar {
@@ -442,6 +495,35 @@ span.thin {
      padding: 0;
      transition: color 0.2s ease;
 }
+
+.btn-guardar-compartir {
+     display: inline-flex;
+     align-items: center;
+     transition: box-shadow 0.2s ease, transform 0.2s ease;
+   }
+   .btn-guardar-compartir:hover {
+     transform: translateY(-2px);
+   }
+   .btn-guardar-compartir:active {
+     transform: translateY(0);
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+   }
+   
+   
+   .modal-body .btn-icon {
+     background: transparent;
+     border: none;
+     transition: transform 0.2s ease, filter 0.2s ease;
+   }
+   .modal-body .btn-icon:hover {
+     transform: scale(1.1) rotate(8deg);
+     filter: brightness(1.2);
+   }
+   .modal-body .btn-icon:active {
+     transform: scale(0.9) rotate(0);
+     filter: brightness(1);
+   }
+   
 
 
 .btn-guardar-compartir span {
@@ -954,6 +1036,24 @@ input[type=number]::-webkit-inner-spin-button {
      font-size: 24px !important;
 }
 
+.gasto-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gasto-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.gasto-btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
 
 .gasto-btn img {
      width: 24px;
@@ -1029,3 +1129,48 @@ input[type=number]::-webkit-inner-spin-button {
      font-weight: 700;
      line-height: normal;
 }
+
+#alert-container {
+     position: fixed;
+     top: 1rem;
+     right: 1rem;
+     display: flex;
+     flex-direction: column;
+     gap: 0.75rem;
+     z-index: 1050;
+   }
+   
+   /* Base de la alerta */
+   .custom-alert {
+     display: flex;
+     align-items: center;
+     max-width: 320px;
+     padding: 0.75rem 1rem;
+     background: #ffffff;
+     color: #333333;
+     font-family: Inter, sans-serif;
+     font-size: 0.9rem;
+     border-radius: 8px;
+     border-left: 4px solid transparent;
+     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+     opacity: 0;
+     transform: translateX(20px);
+     transition: opacity 0.3s ease, transform 0.3s ease;
+   }
+   
+   /* Cuando entra */
+   .custom-alert.show {
+     opacity: 1;
+     transform: translateX(0);
+   }
+   
+   /* Colores por tipo */
+   .custom-alert--info {
+     border-color: #2196F3;
+   }
+   .custom-alert--success {
+     border-color: #4CAF50;
+   }
+   .custom-alert--error {
+     border-color: #F44336;
+   }
