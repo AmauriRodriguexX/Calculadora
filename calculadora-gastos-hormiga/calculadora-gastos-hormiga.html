@@ -1,21 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora Gastos Hormiga</title>
+<head lang="es-MX" prefix="og: http://ogp.me/ns#">
+    <!--Metadatos -->
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#b10247">
+    <meta name="msapplication-navbutton-color" content="#b10247">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#b10247">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="description"
+        content="Esta calculadora te ayudará a identificar el costo y el tiempo de tu sueño a cumplir, y te indicará cuánto tienes que ahorrar de manera mensual.">
+    <meta name="author" content="Compartamos">
+    <meta name="facebook-domain-verification" content="lwp3osyfatif1sjjz9eqph8yux8rw2">
 
-  <!-- Bootstrap y Estilos CSS -->
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/desktp-mobile.css">
-  <link rel="stylesheet" href="../css/chart.css">
-  <!-- favicon  -->
-  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <!-- URL Canónica -->
+    <link rel="canonical" href="https://www.compartamos.com.mx/educacion-financiera/calculadora-alcanzando-mis-suenos/">
+
+    <!-- Etiquetas Open Graph -->
+    <meta property="og:url"
+        content="https://www.compartamos.com.mx/educacion-financiera/calculadora-alcanzando-mis-suenos/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Alcanzando mis sueños" />
+    <meta property="og:description"
+        content="Con la calculadora Alcanzando Mis Sueños descubrí cuánto debo ahorrar y el tiempo que me llevará conseguir mi meta. ¡Tú, también descubre qué tan cerca estás de tu objetivo!">
+    <meta property="og:image"
+        content="https://www.compartamos.com.mx/educacion-financiera/calculadora-alcanzando-mis-suenos/assets/icon-things.png">
+
+    <!--Estilos CSS-->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/desktp-mobile.css">
+    <link rel="stylesheet" href="../css/chart.css">
+
+    <!-- Adobde -->
+    <script src="https://assets.adobedtm.com/cb3b68329895/103e8db8a25d/launch-b0b7225849ec.min.js" async></script>
+
+    <script>
+        if ($.cookie("CookConsentanaliticPub") === "true") {
+            //prehiding snippet for Adobe Target with asynchronous tags deployment
+            ; (function (win, doc, style, timeout) {
+                var STYLE_ID = 'at-body-style';
+                function getParent() {
+                    return doc.getElementsByTagName('head')[0];
+                }
+                function addStyle(parent, id, def) {
+                    if (!parent) {
+                        return;
+                    }
+                    var style = doc.createElement('style');
+                    style.id = id;
+                    style.innerHTML = def;
+                    parent.appendChild(style);
+                }
+                function removeStyle(parent, id) {
+                    if (!parent) {
+                        return;
+                    }
+                    var style = doc.getElementById(id);
+                    if (!style) {
+                        return;
+
+                    }
+                    parent.removeChild(style);
+                }
+                addStyle(getParent(), STYLE_ID, style);
+                setTimeout(function () {
+                    removeStyle(getParent(), STYLE_ID);
+                }, timeout);
+            }(window, document, "body {opacity: 0 !important}", 3000));
+        }
+    </script>
+
+    <!-- End Adobde -->
+
+    <!--Banner de cookies -->
+    <script
+        src="/contenthandler/!ut/p/digest!rwIpvDZkKV26JDJjysco_w/dav/fs-type1/themes/CompartamosBanco/js/jquery/jquery.cookie.min.js"></script>
+    <script
+        src="/contenthandler/!ut/p/digest!rwIpvDZkKV26JDJjysco_w/dav/fs-type1/themes/CompartamosBanco/js/site/cookVal.min.js"></script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PXVLSK6');
+    </script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body>
+
+  <script>
+    window.pageCategory = 'Calculadora gastos Hormiga';
+  </script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXVLSK6" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
   <header class="custom-header">
     <a href="https://www.compartamos.com.mx/compartamos">
       <img src="../assets/images/logo_CB.png" alt="Logo" class="logo" width="120">
@@ -27,21 +118,22 @@
       <div class="text-end">
         <p class="text-end p-tab-next-step hide-mobile">Paso 1 de 3</p>
       </div>
-      <h1 class="text-center">Calculadoras Financieras</h1>
+      <h2 class="text-center">Calculadoras Financieras</h2>
       <!-- tabs -->
       <nav class="tabs">
         <!-- Gastos hormiga -->
-        <a href="../calculadora-gastos-hormiga/index.html" class="tab-item active">
-          Gastos hormiga
+        <a href="../calculadora-gastos-hormiga/calculadora-gastos-hormiga.html" class="tab-item active">
+          <h1>Gastos hormiga</h1>
         </a>
 
         <!-- Organizando gastos -->
-        <a href="../calculadora-organizando-mis-gastos/index.html" class="tab-item">
+        <a href="../calculadora-organizando-mis-gastos/calculadora-organizando-mis-gastos.html" class="tab-item">
           Organizando gastos
         </a>
 
         <!-- Alcanzando sueños -->
-        <a href="../calculadora-alcanzando-mis-suenos/index.html" class="tab-item">Alcanzando sueños
+        <a href="../calculadora-alcanzando-mis-suenos/calculadora-alcanzando-mis-suenos.html"
+          class="tab-item">Alcanzando sueños
         </a>
       </nav>
       <div class="text-end">
@@ -135,31 +227,32 @@
 
       <!-- Sección 3: Resumen -->
       <section id="desktop3" class="calculadora-section">
-        <div class="custom-container">
-          <div class="row m-top-20">
-            <!-- Datos a la izquierda -->
-            <div class="col-12 col-md-6">
-              <div class="responsive-text w-100">
-                <p class="hormiga-text">Eres una hormiga:</p>
-                <h4 class="fw-bold">Gastalona</h4>
-                <p class="text-variant-01">¡Fumiga estos gastos!<br>Tus gastos hormiga están elevados</p>
-                <p class="text-variant-01">Representa un:</p>
-                <h4 class="fw-bold">55%</h4>
-                <p class="text-variant-01">de tus ingresos mensuales.</p>
-              </div>
-            </div>
-
-            <!-- Gráfica a la derecha -->
-            <div class="col-12 col-md-6">
-              <div class="d-flex flex-column align-items-center justify-content-center">
-                <div class="pie-chart">
-                  <div class="slice magenta"></div>
-                  <div class="slice orange"></div>
+        <div class="captura">
+          <div class="custom-container">
+            <div class="row m-top-20">
+              <!-- Datos a la izquierda -->
+              <div class="col-12 col-md-6">
+                <div class="responsive-text w-100">
+                  <p class="hormiga-text">Eres una hormiga:</p>
+                  <h4 class="fw-bold">Gastalona</h4>
+                  <p class="text-variant-01">¡Fumiga estos gastos!<br>Tus gastos hormiga están elevados</p>
+                  <p class="text-variant-01">Representa un:</p>
+                  <h4 class="fw-bold">55%</h4>
+                  <p class="text-variant-01">de tus ingresos mensuales.</p>
                 </div>
+              </div>
 
-                <div class="legend mt-3 text-center">
-                  <div><span class="color income me-2"></span> Ingreso mensual</div>
-                  <div><span class="color expenses me-2"></span> Gastos mensuales</div>
+              <!-- Gráfica a la derecha -->
+              <div class="col-12 col-md-6">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                  <div class="pie-chart">
+                    <canvas id="pieChart"></canvas>
+                  </div>
+
+                  <div class="legend mt-3 text-center">
+                    <div><span class="color income me-2"></span> Ingreso mensual</div>
+                    <div><span class="color expenses me-2"></span> Gastos mensuales</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -221,14 +314,14 @@
               </button>
             </div>
             <div class="modal-body text-center">
-              <button class="btn btn-icon">
+              <button class="btn btn-icon" id="downloadBtn">
                 <img src="../assets/images/icons/descarga.png" alt="Descargar" width="48">
               </button>
-              <button class="btn btn-icon">
+              <button class="btn btn-icon" id="facebookBtn">
                 <img src="../assets/images/icons/facebook.png" alt="Facebook" width="48">
               </button>
-              <button class="btn btn-icon">
-                <img src="../assets/images/icons/instagram.png" alt="Instagram" width="48">
+              <button class="btn btn-icon" id="instagramBtn">
+                <img src="../assets/images/icons/compartir-white.png" alt="Compartir" width="48">
               </button>
             </div>
           </div>
@@ -241,13 +334,15 @@
   <footer class="custom-footer">
     <div class="container text-center">
       <!-- Logo -->
-      <a href="https://www.compartamos.com.mx/compartamos"> <img src="../assets/images/logo_CB.png" alt="Compartamos Banco" class="footer-logo mt-4" width="120">
+      <a href="https://www.compartamos.com.mx/compartamos"> <img src="../assets/images/logo_CB.png"
+          alt="Compartamos Banco" class="footer-logo mt-4" width="120">
       </a>
-  
+
       <!-- Información de la empresa -->
-      <p class="empresa-text mt-2">Una empresa de <img src="../assets/images/logo_gentera.png" alt="Compartamos Banco" class="footer-logo" width="80"></p>
+      <p class="empresa-text mt-2">Una empresa de <img src="../assets/images/logo_gentera.png" alt="Compartamos Banco"
+          class="footer-logo" width="80"></p>
       <p class="empresa-text">© 2024 Gentera S. A. B.</p>
-  
+
       <!-- Enlaces -->
       <p class="mt-4">
         <a href="https://www.compartamos.com.mx/compartamos/regulacion/privacidad" class="footer-link">Aviso de
@@ -259,11 +354,30 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="../js/html-to-image.js"></script>
+  <script src="../js/chart-2.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="../js/scripts.js"></script>
-  <script src="../js/chart.js"></script>
-  <script src="../js/home-events.js"></script>
+  <script src="../js/calculos.js"></script>
+  <script src="../js/grafico.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const deviceType = isMobile ? 'mobile' : 'desktop';
+
+    const pageCategory = window.pageCategory || 'Calculadora gastos Hormiga';
+
+    window.dataLayer.push({
+      device: deviceType,
+      pageCategory: pageCategory
+    });
+
+  </script>
+  <script src="../js/analytics.js"></script>
+
+
+  <div id="alert-container"></div>
 </body>
 
 </html>

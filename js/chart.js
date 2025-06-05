@@ -1,103 +1,126 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // MARK: Chart pie
-  function updateChart(income, expenses) {
-    const total = income + expenses;
-    if (total === 0) return;
-    const incomePercentage = (income / total) * 100;
-    // Asigna el porcentaje como variable CSS
-    document.documentElement.style.setProperty('--income-percentage', `${incomePercentage}%`);
+function getCategoriesData() {
+  // MARK: Define mapeo de colores por categoría
+  const colorMap = {
+    renta: "#008FFB",
+    servicios: "#00E396",
+    salud: "#FFB01A",
+    gastosHormiga: "#FF4560",
+    diversion: "#775DD0",
+    comidas: "#AA00FF",
+    educacion: "#FF00AA",
+    transporte: "#00FFAA",
+    creditos: "#AAFF00",
+    despensa: "#00AAFF",
+    ropa: "#FFAA00",
+    cuidadoPersonal: "#FF0000",
+    otros: "#CCCCCC"
+  };
+
+  // MARK: Recolecta datos de cada sección de gasto existente
+  return Array.from(
+    document.querySelectorAll('#gastos-container .input-seciont-add:not(#total-block)')
+  ).map(div => {
+    const id    = div.id.replace('gasto-', '');                        
+    const raw   = (document.getElementById(`input-${id}`)?.value || '0').replace(/,/g, '');
+    const value = parseFloat(raw) || 0;                                
+    const name  = div.querySelector('.info-input span')?.innerText || id; 
+    const color = colorMap[id] || '#CCCCCC';                           
+    return { id, name, value, color };
+  });
+}
+
+function updateDonutChart() {
+  const categories = getCategoriesData();                                
+  const total      = categories.reduce((sum, c) => sum + c.value, 0); 
+
+  if (total <= 0) {
+    //Si no hay gastos, limpia gradiente y etiquetas
+    document.documentElement.style.removeProperty('--donut-gradient');
+    const labelsEmpty = document.querySelector('.percent-labels');
+    if (labelsEmpty) labelsEmpty.innerHTML = '';
+    return;
   }
 
-  // Cargar datos desde localStorage (o valores por defecto)
-  const income = parseFloat(localStorage.getItem('income')) || 3000;
-  const expenses = parseFloat(localStorage.getItem('expenses')) || 2000;
-  updateChart(income, expenses);
+  // MARK: Construye gradiente CSS para el donut chart
+  let gradient = '';
+  let acc      = 0;
+  const gap    = 0;
 
-  // MARK: Chart Donut
-  function updateDonutChart() {
-    // Ejemplo: 5 categorías que suman 100
-    const categories = [
-      { name: "Renta",             value: 25, color: "#008FFB" },
-      { name: "Pago de servicios",  value: 25, color: "#00E396" },
-      { name: "Salud",             value: 20, color: "#FFB01A" },
-      { name: "Gastos hormiga",    value: 15, color: "#FF4560" },
-      { name: "Diversión",         value: 15, color: "#775DD0" }
-    ];
+  categories.forEach((cat, idx) => {
+    if (cat.value <= 0) return;
+    const pct   = (cat.value / total) * 100;
+    const start = acc + (idx > 0 ? gap : 0);
+    const end   = start + pct - gap;
+    gradient   += `${cat.color} ${start}% ${end}%, white ${end}% ${end + gap}%, `;
+    acc = end + gap;
+  });
 
-    // Suma total de valores (debe ser 100 para un donut completo)
-    const total = categories.reduce((sum, cat) => sum + cat.value, 0);
-    let gradient = "";
-    let accumulatedPercent = 0;
-    // Gap entre secciones
-    const gapSm = 0;
+  gradient = gradient.slice(0, -2);                                     
+  document.documentElement.style.setProperty('--donut-gradient', gradient);
 
-    // Generar el conic-gradient
-    categories.forEach((cat, index) => {
-      const percent = (cat.value / total) * 100;
-      const start = accumulatedPercent + (index > 0 ? gapSm : 0);
-      const end = start + percent - gapSm;
-      gradient += `${cat.color} ${start}% ${end}%, white ${end}% ${end + gapSm}%, `;
-      accumulatedPercent = end + gapSm;
+  // MARK: Genera y posiciona etiquetas de porcentaje alrededor del donut
+  const labelsContainer = document.querySelector('.percent-labels');
+  if (labelsContainer) {
+    labelsContainer.innerHTML = '';
+    const placed     = [];
+    const cx         = 100, cy = 100;      // Centro del donut en px
+    const baseRadius = 80;                 // Radio base para etiquetas
+    const minGap     = 20;                 // Distancia mínima entre etiquetas
+    const offsetStep = 10;                 // Incremento de radio si colisionan
+    let accLabel     = 0;
+
+    categories.forEach(cat => {
+      if (cat.value <= 0) return;
+      const pct   = (cat.value / total) * 100;
+      const mid   = accLabel + pct / 2;
+      const angle = (mid / 100) * 360 - 90;                             
+      const rad   = angle * Math.PI / 180;
+
+      let radius = pct < 3 ? baseRadius * 1.2 : baseRadius;             
+      let x = Math.cos(rad) * radius + cx;
+      let y = Math.sin(rad) * radius + cy;
+
+      // MARK: Ajusta posición si está muy cerca de otra etiqueta
+      for (let other of placed) {
+        while (Math.hypot(x - other.x, y - other.y) < minGap) {
+          radius += offsetStep;
+          x = Math.cos(rad) * radius + cx;
+          y = Math.sin(rad) * radius + cy;
+        }
+      }
+
+      const label = document.createElement('div');
+      label.className       = 'percent-label';
+      label.style.left      = `${x}px`;
+      label.style.top       = `${y}px`;
+      label.style.transform = 'translate(-50%, -50%)';
+      label.textContent     = `${pct.toFixed(1)}%`;
+
+      labelsContainer.appendChild(label);
+      placed.push({ x, y });
+      accLabel += pct;
     });
-    // Eliminar la última coma y espacio
-    gradient = gradient.slice(0, -2);
-    // Asigna el gradiente a la variable CSS
-    document.documentElement.style.setProperty('--donut-gradient', gradient);
-
-    // Posicionar los porcentajes (solo si existe el contenedor)
-    const labelsContainer = document.querySelector('.percent-labels');
-    if (labelsContainer) {
-      labelsContainer.innerHTML = ''; // Limpiar antes de renderizar
-      accumulatedPercent = 0;
-      categories.forEach(cat => {
-        const catPercent = (cat.value / total) * 100;
-        const midPercent = accumulatedPercent + catPercent / 2;
-        const angle = (midPercent / 100) * 360 - 90;
-        // Calcular coordenadas para ubicar la etiqueta
-        const x = Math.cos(angle * (Math.PI / 180)) * 80 + 100;
-        const y = Math.sin(angle * (Math.PI / 180)) * 80 + 100;
-        const label = document.createElement("div");
-        label.className = 'percent-label';
-        label.style.left = `${x}px`;
-        label.style.top = `${y}px`;
-        label.textContent = `${catPercent.toFixed(1)}%`;
-        labelsContainer.appendChild(label);
-        accumulatedPercent += catPercent;
-      });
-    }
-  }
-  // Inicializar la gráfica donut (si existe la estructura, de lo contrario no hace nada)
-  updateDonutChart();
-
-  // MARK: Progress Bar
-  function updateSliderBackground(slider) {
-    let percentage = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-    slider.style.background = `linear-gradient(to right, #EF5292 0%, #EF5292 ${percentage}%, #F0EFEF ${percentage}%, #F0EFEF 100%)`;
   }
 
-  const dreamCost = document.getElementById('dreamCost');
-  const dreamTime = document.getElementById('dreamTime');
-  const costValue = document.getElementById('costValue');
-  const timeValue = document.getElementById('timeValue');
+  // MARK: Actualiza leyenda después de dibujar el donut
+  if (typeof updateLegend === 'function') updateLegend();
+}
 
-  if (dreamCost && costValue) {
-    dreamCost.addEventListener('input', function() {
-      updateSliderBackground(this);
-      costValue.innerText = `$${parseInt(this.value).toLocaleString()}`;
-    });
-    // Inicializar slider
-    updateSliderBackground(dreamCost);
-  } else {
-    console.error("No se encontró 'dreamCost' o 'costValue'");
-  }
+function updateLegend() {
+  const cats = getCategoriesData().filter(c => c.value > 0);          
+  const container = document.getElementById('legend');
+  if (!container) return;
+  container.innerHTML = '';
 
-  if (dreamTime && timeValue) {
-    dreamTime.addEventListener('input', function() {
-      updateSliderBackground(this);
-      timeValue.innerText = `${this.value} años`;
-    });
-    updateSliderBackground(dreamTime);
-  } else {
-    console.error("No se encontró 'dreamTime' o 'timeValue'");
-  }
-});
+  cats.forEach(cat => {
+    const item   = document.createElement('div');
+    const swatch = document.createElement('span');
+    swatch.className            = 'color';
+    swatch.style.backgroundColor = cat.color;                          
+    item.appendChild(swatch);
+    item.append(' ' + cat.name);                                       
+    container.appendChild(item);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', updateDonutChart);

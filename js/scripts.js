@@ -1,4 +1,24 @@
 // MARK: - Funcion para la calculadora de mis suenos 
+
+/**
+ * Muestra una alerta tipo toast.
+ * @param {string} message El mensaje a mostrar.
+ * @param {'info'|'success'|'error'} [type='info'] El estilo de la alerta.
+ */
+function showAlert(message, type = 'info') {
+  const container = document.getElementById('alert-container');
+  const toast = document.createElement('div');
+  toast.className = `custom-alert custom-alert--${type}`;
+  toast.textContent = message;
+  container.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  setTimeout(() => {
+    toast.classList.remove('show');
+    toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+  }, 6000);
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
   // Secciones principales
   const desktop1 = document.getElementById('desktop1');
@@ -173,21 +193,27 @@ pTabSteps.forEach(el => {
   
 
   // Acción del botón "Finalizar": si está habilitado, actualizar el paso y enviar a desktop2
-finalizarButton.addEventListener('click', function() {
-  if (!this.disabled) {
+const finalizeButton = document.getElementById('finalizarButton');
+if (finalizeButton) {
+  finalizeButton.addEventListener('click', function() {
+     if (!this.disabled) {
     pTabSteps.forEach(el => {
       el.innerText = "Paso 3 de 3";
     });
     desktop1.style.setProperty('display', 'none', 'important');
     if (desktop2) desktop2.style.setProperty('display', 'block', 'important');
   }
-});
+  });
+}
 
 
 
 
 
   // Acción del botón "Reiniciar calculadora": restablece el flujo en desktop1, volviendo a mostrar la grid
+
+  
+
   if (reiniciarButton) {
     reiniciarButton.addEventListener('click', function() {
       // Reiniciar el estado de los sliders
@@ -244,18 +270,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // MARK: - Función para mostrar una sección en particular y actualizar el paso
 function mostrarSeccion(numero) {
-  // Oculta todas las secciones
-  document.querySelectorAll('.calculadora-section').forEach(seccion => {
-    seccion.style.display = 'none';
-  });
-  // Muestra la sección indicada
-  document.getElementById(`desktop${numero}`).style.display = 'block';
+  const all = Array.from(document.querySelectorAll('.calculadora-section'));
+  // Oculta todo
+  all.forEach(s => s.style.display = 'none');
 
-  // Actualiza el texto de los pasos en los elementos con clase "p-tab-next-step"
+  // Muestra el target
+  const target = document.getElementById(`desktop${numero}`);
+  if (target) target.style.display = 'block';
+
+  // Actualiza “Paso X de Y” usando el conteo real de secciones visibles
+  const total = all.length; 
   document.querySelectorAll('.p-tab-next-step').forEach(el => {
-    el.innerText = `Paso ${numero} de 3`;
+    el.innerText = `Paso ${numero} de ${total}`;
   });
 }
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
   // Mostrar inicialmente la sección 1 y actualizar el paso
@@ -265,10 +295,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const continueButton = document.getElementById('continueButton');
 
   // Event para el botón Continuar (de la sección 1 a la 2)
+  if (continueButton) {
   continueButton.addEventListener('click', function () {
     mostrarSeccion(2);
   });
-
+  }
   // Al hacer clic en un botón de gasto se habilita y activa el botón Finalizar
   const gastoBtns = document.querySelectorAll('.gasto-btn');
   gastoBtns.forEach(btn => {
@@ -279,19 +310,31 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Al hacer clic en Finalizar, se pasa a la sección 3 si el botón está habilitado
-  finalizarButton.addEventListener('click', function () {
-    if (!finalizarButton.disabled) {
-      mostrarSeccion(3);
-    }
-  });
+finalizarButton.addEventListener('click', function () {
+  if (!this.disabled) {
+    // Si solo hay 2 secciones, pasa directamente a 2:
+    mostrarSeccion( window.pageCategory === 'Calculadora alcanzando mis sueños' ? 2 : 3 );
+  }
+});
+
 
   // Botón Reiniciar en la sección 3: limpia los campos y vuelve a la sección 1
   // Botón Reiniciar en la sección 3 (o en desktop2, según corresponda)
 const reiniciarBtnDesktop2 = document.querySelector('#desktop2 #reiniciarButton');
+if (reiniciarBtnDesktop2) {
 reiniciarBtnDesktop2.addEventListener('click', function () {
   reiniciarCalculadora();
   mostrarSeccion(1);
 });
+}
+
+const reiniciarBtnDesktop3 = document.querySelector('#desktop3 #reiniciarButton');
+if (reiniciarBtnDesktop3) {
+  reiniciarBtnDesktop3.addEventListener('click', function() {
+    reiniciarCalculadora();  
+    mostrarSeccion(1);     
+  });
+}
 
 
 });
@@ -302,6 +345,8 @@ reiniciarBtnDesktop2.addEventListener('click', function () {
 document.addEventListener("DOMContentLoaded", function () {
   const inputField = document.getElementById("number");
   const continueButton = document.getElementById("continueButton");
+
+  if (!inputField || !continueButton) return;
 
   inputField.addEventListener("input", function () {
     // Guarda la posición actual del cursor en el campo
@@ -362,59 +407,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // MARK: - next stape 
 document.addEventListener('DOMContentLoaded', function() {
- // Obtenemos los elementos necesarios
- const ingresosInput = document.getElementById('number');
- const continueButton = document.getElementById('continueButton');
- const section1 = document.getElementById('desktop1');
- const section2 = document.getElementById('desktop2');
+  const ingresosInput   = document.getElementById('number');
+  const continueButton  = document.getElementById('continueButton');
+  const section1        = document.getElementById('desktop1');
+  const section2        = document.getElementById('desktop2');
 
- // Función para validar el campo de ingresos
- function validarIngreso() {
-   const valor = ingresosInput.value.trim();
-   continueButton.disabled = valor === '';
- }
+  // Si falta alguno, salimos
+  if (!ingresosInput || !continueButton || !section1 || !section2) return;
 
- // Escucha el evento 'input' en el campo para habilitar/deshabilitar el botón
- ingresosInput.addEventListener('input', validarIngreso);
+  function validarIngreso() {
+    const valor = ingresosInput.value.trim();
+    continueButton.disabled = valor === '';
+  }
 
- // Manejar el clic en el botón "Continuar"
- continueButton.addEventListener('click', function() {
-   // Oculta la sección 1 y muestra la sección 2
-   section1.style.display = 'none';
-   section2.style.display = 'block';
- });
+  ingresosInput.addEventListener('input', validarIngreso);
+  continueButton.addEventListener('click', function() {
+    section1.style.display = 'none';
+    section2.style.display = 'block';
+  });
 });
+
 
 
 // MARK: Mostrar la grid al hacer clic en "+ agregar" (paso 2)
 document.addEventListener('DOMContentLoaded', function() {
-  // Estado inicial: ocultar la grid y el contenedor de gastos.
-  document.querySelector('.grid-container').style.display = 'none';
-  document.getElementById('gastos-container').style.display = 'none';
 
-  // Seleccionamos el botón "+ agregar"
-  const btnAgregar = document.querySelector('.btn-agregar');
-  // Aseguramos que tenga el texto inicial al cargar
+  const grid          = document.querySelector('.grid-container');
+  const gastosCont    = document.getElementById('gastos-container');
+  const btnAgregar    = document.querySelector('.btn-agregar');
+  const gastoBtns     = document.querySelectorAll('.gasto-btn');
+
+  // Protegemos cada acceso al DOM
+  if (grid)       grid.style.display       = 'none';
+  if (gastosCont) gastosCont.style.display = 'none';
+
+  // Si no hay botón de “+ agregar” salimos ya
+  if (!btnAgregar) return;
+
   btnAgregar.innerText = '+ agregar';
-
-  // Al hacer clic en "+ agregar": mostrar la grid y ocultar el botón.
   btnAgregar.addEventListener('click', function() {
-    document.querySelector('.grid-container').style.display = 'flex';
-    this.style.display = 'none';
+    if (grid) grid.style.display = 'flex';
+    this.style.display          = 'none';
   });
 
-  // Asignar evento a cada botón de gasto de la grid.
-  document.querySelectorAll('.gasto-btn').forEach(btn => {
+  gastoBtns.forEach(btn => {
     btn.addEventListener('click', function() {
       const nombre = this.querySelector('span').innerText;
-      const id = this.dataset.gasto;
+      const id     = this.dataset.gasto;
       crearCampoGasto(nombre, id);
-      // Luego de seleccionar una opción:
-      document.querySelector('.grid-container').style.display = 'none';
-      btnAgregar.style.display = 'block';
-      btnAgregar.innerText = '+ agregar otro'; // Actualiza el texto al agregar un elemento.
-      // Mostrar el contenedor de gastos.
-      document.getElementById('gastos-container').style.display = 'block';
+
+      if (grid)       grid.style.display       = 'none';
+      btnAgregar.style.display               = 'block';
+      btnAgregar.innerText                   = '+ agregar otro';
+      if (gastosCont) gastosCont.style.display = 'block';
     });
   });
 
@@ -537,5 +582,104 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
+  
+});
+
+// MARK: Compartir
+
+window.addEventListener('load', () => {
+  const exportArea = document.querySelector('.captura');
+  if (!exportArea) {
+    console.warn('No se encontró la sección a exportar');
+    return;
+  }
+
+  const downloadBtn = document.getElementById('downloadBtn');
+  const fbBtn = document.getElementById('facebookBtn');
+  const igBtn = document.getElementById('instagramBtn');
+
+  if (!downloadBtn || !fbBtn || !igBtn) {
+    console.warn('Botones de acción no encontrados');
+    return;
+  }
+
+  async function generarCaptura() {
+    try {
+      return await htmlToImage.toPng(exportArea, {
+        backgroundColor: '#fff',
+        pixelRatio: 2
+      });
+    } catch (err) {
+      console.error('Error al capturar imagen:', err);
+      throw err;
+    }
+  }
+
+  downloadBtn.addEventListener('click', async () => {
+    try {
+      const dataUrl = await generarCaptura();
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = 'resumen-financiero.png';
+      link.click();
+    } catch {
+      alert('No se pudo generar la imagen.');
+    }
+  });
+
+  fbBtn.addEventListener('click', () => {
+    const url = encodeURIComponent(window.location.href);
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      '_blank',
+      'width=600,height=400'
+    );
+  });
+
+
+  igBtn.addEventListener('click', async () => {
+    try {
+      const dataUrl = await generarCaptura();
+      const isAndroid = /Android/.test(navigator.userAgent) && navigator.canShare;
+      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  
+      if (isAndroid) {
+        const blob = await (await fetch(dataUrl)).blob();
+        const file = new File([blob], 'resumen.png', { type: 'image/png' });
+        await navigator.share({ files: [file], title: 'Mi resumen financiero' });
+        return;
+      }
+  
+      if (isIOS) {
+        const blob = await (await fetch(dataUrl)).blob();
+        const fileUrl = URL.createObjectURL(blob);
+        // Instagram Stories share URI para iOS
+        const scheme =
+          `instagram-stories://share` +
+          `?backgroundImage=${encodeURIComponent(fileUrl)}` +
+          `&sourceApplication=${encodeURIComponent(window.location.origin)}`;
+        window.location.href = scheme;
+        return;
+      }
+
+      window.open('https://www.instagram.com/', '_blank');
+
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = 'resumen-financiero.png';
+      link.click();
+  
+      showAlert(
+        'Se ha abierto Instagram en una nueva pestaña:\n\n' +
+        '1) Inicia sesión si no lo has hecho.\n\n' +
+        '2) Arrastra o selecciona el archivo “resumen-financiero.png” para crear tu publicación.'
+      );
+    } catch (err) {
+      console.error(err);
+      showAlert('No se pudo compartir o descargar la imagen. Intenta de nuevo.');
+    }
+  });
+  
+  
   
 });
